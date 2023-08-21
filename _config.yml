@@ -81,14 +81,14 @@ analytics:
 # Site Author
 author:
   name             : "Valentin Ritzenthaler"
-  avatar           : "images/val_capitole.jpg"
+  avatar           : "images/bio-photo.jpg"
   bio              : "PhD student in Scientific Computing"
   location         : "Toulouse - France"
-  employer         :
+  employer         : "ONERA - The French Aerospace Lab"
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : #"http://yourfullgooglescholarurl.com"
-  email            :
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  email            : "valentin.ritzenthaler@gmail.com"
+  researchgate     :  "https://www.researchgate.net/profile/Valentin-Ritzenthaler"
   uri              :
   bitbucket        :
   codepen          :
@@ -96,13 +96,13 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : #"academicpages"
+  github           : "https://github.com/vritzenthaler"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
+  linkedin         : "https://fr.linkedin.com/in/valentin-ritzenthaler-990a8b16b"
   orcid            : #"http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
