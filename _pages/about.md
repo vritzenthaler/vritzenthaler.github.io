@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Welcome on my website !"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-This is my personal webpage. I'm a PhD Student in Scientific computing at ONERA Toulouse, my research interest are: 
-- Maxwell's equations in Time-Domaine,
-- Numerical schemes,
+I'm a PhD Student in Scientific computing at ONERA Toulouse, my research interests are: 
+- Numerical simulation of Partial Differential Equations,
+- Compatible discretization,
 - Numerical analysis.
