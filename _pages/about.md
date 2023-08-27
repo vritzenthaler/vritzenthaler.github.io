@@ -15,13 +15,10 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
 
 ### Book I read recently
 
-<img style="float: left; width=50%; height=50%" src="images/bobroff.jpg">
-
-(In French) A book that shows 14 experiments which have permitted to observe quantum properties (such as decoherence, c.f. Serge Haroche experiment).  
-
+<!-- <img style="float: left; width=50%; height=50%" src="images/bobroff.jpg"> -->
+ 
 <html>
   <head>
-    <title>The title of the document</title>
     <style>
       .container {
         display: flex;
@@ -43,10 +40,11 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
   <body>
     <div class="container">
       <div class="image">
-        <img src="https://i.pinimg.com/originals/26/ea/fc/26eafc0b14488fea03fa8fa9751203ff.jpg">
+        <img src="images/bobroff.jpg">
       </div>
       <div class="text">
-        <h1>Paris is one of the most beautiful cities in France.</h1>
+        (In French) A book that shows 14 experiments which have permitted 
+        to observe quantum properties (such as decoherence, c.f. Serge Haroche experiment). 
       </div>
     </div>
   </body>
