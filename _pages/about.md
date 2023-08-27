@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a PhD Student in Scientific computing at ONERA Toulouse, my research interests are: 
+I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interests are: 
 - Numerical simulation of Partial Differential Equations,
 - Compatible discretization,
 - Numerical analysis.
