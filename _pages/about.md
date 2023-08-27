@@ -26,7 +26,8 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
         justify-content: center
       }
       img {
-        max-width: 100%
+        max-width: 100%;
+        width: 200px;
       }
       .image {
         flex-basis: 40%
