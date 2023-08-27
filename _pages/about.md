@@ -47,5 +47,13 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
         to observe quantum properties (such as decoherence, c.f. Serge Haroche experiment). 
       </div>
     </div>
+    <div class="container">
+      <div class="image">
+        <img src="images/pll.jpg">
+      </div>
+      <div class="text">
+        (In French) A book about Pierre-Louis Lions life. Very inspiring.  
+      </div>
+    </div>
   </body>
 </html>
