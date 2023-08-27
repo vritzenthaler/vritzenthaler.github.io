@@ -26,7 +26,7 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
         justify-content: center
       }
       img {
-        max-width: 100%;
+        /* max-width: 100%; */
         width: 200px;
       }
       .image {
@@ -48,6 +48,7 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
         to observe quantum properties (such as decoherence, c.f. Serge Haroche experiment). 
       </div>
     </div>
+    <p></p>
     <div class="container">
       <div class="image">
         <img src="images/pll.jpg">
