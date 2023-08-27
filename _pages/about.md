@@ -15,6 +15,6 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
 
 ### Book I read recently
 
-<img style="float: right;" src="bobroff.jpg">
+<img style="float: right;" src="images/bobroff.jpg">
 
 (In French) A book that shows 14 experiments which have permitted to observe quantum properties (such as decoherence, c.f. Serge Haroche experiment).  
