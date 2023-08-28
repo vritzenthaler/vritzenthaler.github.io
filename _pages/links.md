@@ -1,7 +1,7 @@
 ---
 layout: archive
-title: "Bookshelf"
-permalink: /bookshelf/
+title: "Links"
+permalink: /links/
 author_profile: true
 ---
 

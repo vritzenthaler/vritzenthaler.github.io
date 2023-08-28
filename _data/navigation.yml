@@ -15,6 +15,9 @@ main:
   - title: "Bookshelf"
     url: /bookshelf/
 
+  - title: "Links"
+    url: /links/
+
   # - title: "Portfolio"
   #   url: /portfolio/
     
