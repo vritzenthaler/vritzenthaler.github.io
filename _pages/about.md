@@ -13,9 +13,7 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
 - Compatible discretization,
 - Numerical analysis.
 
-### Book I read recently
-
-<!-- <img style="float: left; width=50%; height=50%" src="images/bobroff.jpg"> -->
+### Book currently on my nightstand
  
 <html>
   <head>
@@ -41,20 +39,10 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
   <body>
     <div class="container">
       <div class="image">
-        <img src="images/bobroff.jpg">
+        <img src="images/gisin.jpg">
       </div>
       <div class="text">
-        (In French) A book that shows 14 experiments which have permitted 
-        to observe quantum properties (such as decoherence, c.f. Serge Haroche experiment). 
-      </div>
-    </div>
-    <p></p>
-    <div class="container">
-      <div class="image">
-        <img src="images/pll.jpg">
-      </div>
-      <div class="text">
-        (In French) A book about Pierre-Louis Lions life. Very inspiring.  
+        (In French) A book about quantum information.
       </div>
     </div>
   </body>
