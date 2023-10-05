@@ -13,9 +13,9 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
 - Compatible discretization,
 - Numerical analysis.
 
-### Book currently on my nightstand
+<!-- ### Book currently on my nightstand -->
  
-<html>
+<!-- <html>
   <head>
     <style>
       .container {
@@ -46,4 +46,4 @@ I'm a PhD Student in Scientific computing at ONERA Toulouse. My research interes
       </div>
     </div>
   </body>
-</html>
+</html> -->
