@@ -5,8 +5,9 @@ permalink: /links/
 author_profile: true
 ---
 
-A discussion between Naval Ravikant and David Deutsch:
-* [Video 1](https://www.youtube.com/watch?v=YyxepLfH1ZU&ab_channel=Naval) 
-* [Video 2](https://www.youtube.com/watch?v=aQfeYBa1MTk&ab_channel=Naval) 
+A good conference about Quantum Computing pros and cons (and why to be sceptical about it)
+[link](https://www.youtube.com/watch?v=BLi9WliRGE4&ab_channel=ONERA)  
+
+Guillaume Puigt's website:[link](gpuigt.free.fr)  
 
 David Deutsch's website:[link](https://www.daviddeutsch.org.uk/) 
