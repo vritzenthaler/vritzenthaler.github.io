@@ -65,6 +65,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -479,10 +480,6 @@ abbr[title] {
   .layout-home {
     min-height: 100vh;
     min-height: 100svh;
-  }
-
-  .layout-home .site-header {
-    padding-block: clamp(0.9rem, 2.6vh, 2rem);
   }
 
   .layout-home main {
