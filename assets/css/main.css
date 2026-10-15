@@ -786,6 +786,10 @@ abbr[title] {
 }
 
 .post-header .lede {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 1.15rem + 0.55vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.4;
   color: var(--ink-soft);
 }
 
@@ -820,8 +824,11 @@ abbr[title] {
 
 .prose {
   margin-top: clamp(2rem, 5vw, 3.5rem);
-  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.2rem);
-  line-height: 1.7;
+  font-family: var(--serif);
+  font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.35rem);
+  line-height: 1.65;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  hyphens: auto;
 }
 
 .prose > :first-child {
@@ -861,8 +868,7 @@ abbr[title] {
   margin: 2em 0;
   padding: 0.1em 0 0.1em 1.25em;
   border-left: 2px solid var(--terre);
-  font-family: var(--serif);
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-style: italic;
   line-height: 1.45;
 }
