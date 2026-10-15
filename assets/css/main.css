@@ -1016,15 +1016,15 @@ abbr[title] {
   }
 
   ::view-transition-group(site-header) {
-    animation-duration: 0.2s;
+    animation-duration: 0.3s;
   }
 
   ::view-transition-old(root) {
-    animation: page-out 0.16s var(--ease) both;
+    animation: page-out 0.28s ease-out both;
   }
 
   ::view-transition-new(root) {
-    animation: page-in 0.32s var(--ease) 0.06s both;
+    animation: page-in 0.5s ease-in-out 0.12s both;
   }
 }
 
@@ -1037,7 +1037,6 @@ abbr[title] {
 @keyframes page-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
   }
 }
 
