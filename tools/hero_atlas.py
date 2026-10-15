@@ -88,6 +88,15 @@ def arrowhead(x, y, angle, size=12):
             f'L {x + size * math.cos(a2):.1f} {y + size * math.sin(a2):.1f}')
 
 
+def anim(kind, delay, duration):
+    return f' class="{kind}" style="animation-delay:{delay:g}s;animation-duration:{duration:g}s"'
+
+
+def pencil(inner, kind=None, delay=0, duration=0):
+    """Wrap an element in its own pencil filter; fades animate the filtered result, so the filter is not recomputed."""
+    return f'<g filter="url(#pencil)"{anim(kind, delay, duration) if kind else ""}>{inner}</g>'
+
+
 def hatch(x0, y0, x1, y1, spacing, angle_deg):
     a = math.radians(angle_deg)
     dx, dy = math.cos(a), math.sin(a)
@@ -120,7 +129,7 @@ def build():
     p = []
     p.append(f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 484" width="600" height="484">
 <defs>
-  <filter id="pencil" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB">
+  <filter id="pencil" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
     <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="wobble"/>
     <feDisplacementMap in="SourceGraphic" in2="wobble" scale="2.8" xChannelSelector="R" yChannelSelector="G" result="shaky"/>
     <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11" result="grain"/>
@@ -134,74 +143,80 @@ def build():
   <clipPath id="iacap"><path d="{IMG_A_CAP}"/></clipPath>
   <clipPath id="ibcap"><path d="{IMG_B_CAP}"/></clipPath>
 </defs>
+<style>
+  @media (prefers-reduced-motion: no-preference) {{
+    .draw {{ stroke-dasharray: 1 2; animation: draw 0.6s cubic-bezier(0.45, 0.05, 0.3, 1) both; }}
+    .fade {{ animation: fade 0.4s ease-out both; }}
+  }}
+  @keyframes draw {{ from {{ stroke-dashoffset: 1.01; }} to {{ stroke-dashoffset: 0; }} }}
+  @keyframes fade {{ from {{ opacity: 0; }} }}
+</style>
 """)
 
     # light washes, kept outside the pencil filter
-    p.append(f'<path d="{U_A}" fill="{BLUE}" opacity="0.035"/>')
-    p.append(f'<path d="{U_B}" fill="{BLUE}" opacity="0.035"/>')
-    p.append(f'<path d="{IMG_A}" fill="{BLUE}" opacity="0.035"/>')
-    p.append(f'<path d="{IMG_B}" fill="{BLUE}" opacity="0.035"/>')
-    p.append('<g filter="url(#pencil)">')
+    p.append(f'<path d="{U_A}" fill="{BLUE}" opacity="0.035"{anim("fade", 0.9, 0.5)}/>')
+    p.append(f'<path d="{U_B}" fill="{BLUE}" opacity="0.035"{anim("fade", 0.95, 0.5)}/>')
+    p.append(f'<path d="{IMG_A}" fill="{BLUE}" opacity="0.035"{anim("fade", 1.6, 0.5)}/>')
+    p.append(f'<path d="{IMG_B}" fill="{BLUE}" opacity="0.035"{anim("fade", 1.65, 0.5)}/>')
 
     # hatching of the overlaps
-    p.append(f'<g clip-path="url(#ua)"><g clip-path="url(#ub)"><path d="{hatch(260, 110, 330, 230, 5, -55)}" {STROKE} stroke-width="1.2" opacity="0.7"/></g></g>')
-    p.append(f'<g clip-path="url(#ia)"><g clip-path="url(#iacap)"><path d="{hatch(170, 330, 230, 430, 5, 90)}" {STROKE} stroke-width="1.2" opacity="0.65"/></g></g>')
-    p.append(f'<g clip-path="url(#ib)"><g clip-path="url(#ibcap)"><path d="{hatch(380, 330, 440, 430, 5, 0)}" {STROKE} stroke-width="1.2" opacity="0.65"/></g></g>')
+    for clip_a, clip_b, d, op, t in [
+        ("ua", "ub", hatch(260, 110, 330, 230, 5, -55), 0.7, 1.0),
+        ("ia", "iacap", hatch(170, 330, 230, 430, 5, 90), 0.65, 1.7),
+        ("ib", "ibcap", hatch(380, 330, 440, 430, 5, 0), 0.65, 1.75),
+    ]:
+        p.append(pencil(f'<g clip-path="url(#{clip_a})"><g clip-path="url(#{clip_b})"><path d="{d}" {STROKE} stroke-width="1.2" opacity="{op}"/></g></g>', "fade", t, 0.4))
 
     # outlines, traced twice like a pencil sketch
-    for d, w in [(MANIFOLD, 2.5), (U_A, 2.1), (U_B, 2.1), (IMG_A, 2.1), (IMG_B, 2.1)]:
-        p.append(f'<path d="{d}" {STROKE} stroke-width="{w}" opacity="0.88"/>')
-        p.append(f'<path d="{d}" {STROKE} stroke-width="1.1" opacity="0.38" transform="translate(1.2 -0.8) rotate(0.4 300 230)"/>')
-    p.append(f'<path d="M 176 337 C 196 360, 196 404, 180 427" {STROKE} stroke-width="1.5" opacity="0.75"/>')
-    p.append(f'<path d="M 428 337 C 410 360, 414 404, 432 428" {STROKE} stroke-width="1.5" opacity="0.75"/>')
+    for d, w, t, dur in [(MANIFOLD, 2.5, 0.0, 0.9), (U_A, 2.1, 0.45, 0.55), (U_B, 2.1, 0.6, 0.55),
+                         (IMG_A, 2.1, 1.3, 0.5), (IMG_B, 2.1, 1.4, 0.5)]:
+        p.append(pencil(f'<path d="{d}" {STROKE} stroke-width="{w}" opacity="0.88" pathLength="1"{anim("draw", t, dur)}/>'))
+        p.append(pencil(f'<path d="{d}" {STROKE} stroke-width="1.1" opacity="0.38" transform="translate(1.2 -0.8) rotate(0.4 300 230)" pathLength="1"{anim("draw", t + 0.15, dur)}/>'))
+    p.append(pencil(f'<path d="M 176 337 C 196 360, 196 404, 180 427" {STROKE} stroke-width="1.5" opacity="0.75" pathLength="1"{anim("draw", 1.6, 0.3)}/>'))
+    p.append(pencil(f'<path d="M 428 337 C 410 360, 414 404, 432 428" {STROKE} stroke-width="1.5" opacity="0.75" pathLength="1"{anim("draw", 1.65, 0.3)}/>'))
 
     # coordinate frames
-    for ox in (60, 352):
-        p.append(f'<path d="M {ox} 446 L {ox + 196} 446 M {ox + 12} 456 L {ox + 12} 318" {STROKE} stroke-width="1.6" opacity="0.85"/>')
-        p.append(f'<path d="{arrowhead(ox + 196, 446, 0, 7)} {arrowhead(ox + 12, 318, -math.pi / 2, 7)}" {STROKE} stroke-width="1.6" opacity="0.85"/>')
+    for ox, t in ((60, 1.2), (352, 1.3)):
+        p.append(pencil(f'<path d="M {ox} 446 L {ox + 196} 446 M {ox + 12} 456 L {ox + 12} 318" {STROKE} stroke-width="1.6" opacity="0.85" pathLength="1"{anim("draw", t, 0.5)}/>'))
+        p.append(pencil(f'<path d="{arrowhead(ox + 196, 446, 0, 7)} {arrowhead(ox + 12, 318, -math.pi / 2, 7)}" {STROKE} stroke-width="1.6" opacity="0.85"/>', "fade", t + 0.35, 0.3))
 
     # charts and transition maps
     arrows = [
-        ("M 212 214 C 196 252, 176 284, 160 330", 160, 330),
-        ("M 380 222 C 404 258, 438 292, 452 330", 452, 330),
-        ("M 214 348 C 262 300, 344 300, 392 348", 392, 348),
-        ("M 392 414 C 344 456, 262 456, 214 414", 214, 414),
+        ("M 212 214 C 196 252, 176 284, 160 330", 160, 330, 176, 284, 1.1),
+        ("M 380 222 C 404 258, 438 292, 452 330", 452, 330, 438, 292, 1.2),
+        ("M 214 348 C 262 300, 344 300, 392 348", 392, 348, 344, 300, 1.7),
+        ("M 392 414 C 344 456, 262 456, 214 414", 214, 414, 262, 456, 1.85),
     ]
-    for d, ex, ey in arrows:
-        p.append(f'<path d="{d}" {STROKE} stroke-width="1.7" stroke-dasharray="2.5 5" opacity="0.85"/>')
-    p.append(f'<path d="{arrowhead(160, 330, math.atan2(330 - 284, 160 - 176))}" {STROKE} stroke-width="1.7"/>')
-    p.append(f'<path d="{arrowhead(452, 330, math.atan2(330 - 292, 452 - 438))}" {STROKE} stroke-width="1.7"/>')
-    p.append(f'<path d="{arrowhead(392, 348, math.atan2(348 - 300, 392 - 344))}" {STROKE} stroke-width="1.7"/>')
-    p.append(f'<path d="{arrowhead(214, 414, math.atan2(414 - 456, 214 - 262))}" {STROKE} stroke-width="1.7"/>')
+    for d, ex, ey, cx, cy, t in arrows:
+        p.append(pencil(f'<path d="{d}" {STROKE} stroke-width="1.7" stroke-dasharray="2.5 5" opacity="0.85"/>', "fade", t, 0.4))
+        p.append(pencil(f'<path d="{arrowhead(ex, ey, math.atan2(ey - cy, ex - cx))}" {STROKE} stroke-width="1.7"/>', "fade", t + 0.15, 0.3))
 
     # boundary leader
-    p.append(f'<path d="M 556 214 C 566 230, 572 246, 574 262" {STROKE} stroke-width="1.4" opacity="0.75"/>')
-
-    p.append("</g>")
+    p.append(pencil(f'<path d="M 556 214 C 566 230, 572 246, 574 262" {STROKE} stroke-width="1.4" opacity="0.75" pathLength="1"{anim("draw", 0.8, 0.35)}/>'))
 
     # point p (terracotta accent) and its images
-    p.append(f'<g filter="url(#pencil)" fill="{TERRE}">'
-             f'<circle cx="293" cy="168" r="5"/><circle cx="200" cy="392" r="4.4"/><circle cx="404" cy="372" r="4.4"/></g>')
+    for cx, cy, r, t in [(293, 168, 5, 1.1), (200, 392, 4.4, 1.8), (404, 372, 4.4, 1.85)]:
+        p.append(pencil(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{TERRE}"/>', "fade", t, 0.35))
 
-    # labels
+    # labels, written one after the other
     labels = [
-        formula(78, 152, 38, [("M", "cal", 0)]),
-        formula(572, 288, 24, [("∂", "rm", 0), ("M", "cal", 0)], anchor="middle"),
-        formula(184, 164, 26, [("U", "it", 0), ("α", "it", -1)]),
-        formula(348, 164, 26, [("U", "it", 0), ("β", "it", -1)]),
-        formula(300, 190, 21, [("p", "it", 0)]),
-        formula(178, 272, 25, [("φ", "it", 0), ("α", "it", -1)], anchor="end"),
-        formula(436, 272, 25, [("φ", "it", 0), ("β", "it", -1)]),
-        formula(303, 294, 22, [("τ", "it", 0), ("αβ", "it", -1), ("=", "rm", 0), ("φ", "it", 0), ("β", "it", -1),
-                               ("∘", "rm", 0), ("φ", "it", 0), ("subsup", "α", "−1")], anchor="middle"),
-        formula(303, 476, 22, [("τ", "it", 0), ("βα", "it", -1)], anchor="middle"),
-        formula(256, 476, 23, [("R", "bb", 0), ("n", "it", 1)], anchor="end"),
-        formula(548, 476, 23, [("R", "bb", 0), ("n", "it", 1)], anchor="end"),
-        formula(590, 40, 26, [("∫", "big", 0), ("M", "cal", "lim"), ("d", "rm", 0), ("ω", "it", 0), ("=", "rm", 0),
-                              ("∫", "big", 0), ("∂", "rm", "lim"), ("M", "cal", "lim"), ("ω", "it", 0)], anchor="end"),
+        (0.55, formula(78, 152, 38, [("M", "cal", 0)])),
+        (1.0, formula(572, 288, 24, [("∂", "rm", 0), ("M", "cal", 0)], anchor="middle")),
+        (0.85, formula(184, 164, 26, [("U", "it", 0), ("α", "it", -1)])),
+        (0.95, formula(348, 164, 26, [("U", "it", 0), ("β", "it", -1)])),
+        (1.15, formula(300, 190, 21, [("p", "it", 0)])),
+        (1.25, formula(178, 272, 25, [("φ", "it", 0), ("α", "it", -1)], anchor="end")),
+        (1.35, formula(436, 272, 25, [("φ", "it", 0), ("β", "it", -1)])),
+        (1.75, formula(303, 294, 22, [("τ", "it", 0), ("αβ", "it", -1), ("=", "rm", 0), ("φ", "it", 0), ("β", "it", -1),
+                                      ("∘", "rm", 0), ("φ", "it", 0), ("subsup", "α", "−1")], anchor="middle")),
+        (1.95, formula(303, 476, 22, [("τ", "it", 0), ("βα", "it", -1)], anchor="middle")),
+        (1.5, formula(256, 476, 23, [("R", "bb", 0), ("n", "it", 1)], anchor="end")),
+        (1.6, formula(548, 476, 23, [("R", "bb", 0), ("n", "it", 1)], anchor="end")),
+        (2.1, formula(590, 40, 26, [("∫", "big", 0), ("M", "cal", "lim"), ("d", "rm", 0), ("ω", "it", 0), ("=", "rm", 0),
+                                    ("∫", "big", 0), ("∂", "rm", "lim"), ("M", "cal", "lim"), ("ω", "it", 0)], anchor="end")),
     ]
-    p.append(f'<g filter="url(#pencil)" fill="{BLUE}" opacity="0.95" stroke="#F5F0E6" stroke-width="4" stroke-linejoin="round" paint-order="stroke">')
-    p.extend(labels)
+    p.append(f'<g fill="{BLUE}" opacity="0.95" stroke="#F5F0E6" stroke-width="4" stroke-linejoin="round" paint-order="stroke">')
+    p.extend(pencil(label, "fade", t, 0.45) for t, label in labels)
     p.append("</g>")
     p.append("</svg>")
     return "\n".join(p)
