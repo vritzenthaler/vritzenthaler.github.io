@@ -1,0 +1,58 @@
+en:
+  lang_name: English
+  skip: Skip to content
+  nav_label: Main navigation
+  lang_label: Language
+  nav:
+    home: Home
+    publications: Publications
+    blog: Blog
+  months: [January, February, March, April, May, June, July, August, September, October, November, December]
+  publications:
+    preprint: Preprints
+    published: Published
+    doi: DOI
+    pdf: PDF
+    link: Link
+    in_language: in French
+    thesis: PhD thesis
+  blog:
+    back: All articles
+    read: Read the article
+    empty: No articles yet.
+    untranslated: This article is only available in English.
+    other_list: Read the French articles
+  switch:
+    missing: French version not available, go to the French blog
+  footer:
+    contact: Contact on LinkedIn
+    built: Built with Jekyll, hosted on GitHub Pages.
+fr:
+  lang_name: Français
+  skip: Aller au contenu
+  nav_label: Navigation principale
+  lang_label: Langue
+  nav:
+    home: Accueil
+    publications: Publications
+    blog: Blog
+  months: [janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+  publications:
+    preprint: Prépublications
+    published: Publiées
+    doi: DOI
+    pdf: PDF
+    link: Lien
+    in_language: en français
+    thesis: Thèse de doctorat
+  blog:
+    back: Tous les articles
+    read: Lire l’article
+    empty: Aucun article pour l’instant.
+    untranslated: Cet article n’existe qu’en français.
+    other_list: Lire les articles en anglais
+  switch:
+    missing: Version anglaise indisponible, aller au blog en anglais
+  footer:
+    contact: Me contacter sur LinkedIn
+    built: Construit avec Jekyll, hébergé sur GitHub Pages.

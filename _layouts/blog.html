@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{%- include i18n.html -%}
+<header class="wrap page-head">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {%- if page.intro %}<p class="lede">{{ page.intro }}</p>{% endif %}
+</header>
+{%- assign posts = site.posts | where: "lang", lang %}
+<section class="wrap section" aria-label="{{ page.title }}">
+  {%- if posts.size > 0 %}
+  <ol class="post-list">
+    {%- for post in posts %}
+    <li class="post-card">
+      <div class="post-card-media{% unless post.image %} is-empty{% endunless %}">
+        {%- if post.image %}
+        <img src="{{ post.image | relative_url }}" alt="" width="1200" height="800"{% if forloop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+        {%- endif %}
+      </div>
+      <div class="post-card-body">
+        <p class="post-date">{% include date.html date=post.date lang=lang %}</p>
+        <h2 class="post-card-title"><a class="stretched" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        {%- if post.summary %}<p class="post-card-summary">{{ post.summary }}</p>{% endif %}
+        <p class="post-card-more" aria-hidden="true">{{ t.blog.read }} <span class="arrow">→</span></p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- else %}
+  <p class="empty">{{ t.blog.empty }}</p>
+  {%- endif %}
+</section>

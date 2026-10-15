@@ -1,0 +1,10 @@
+{%- assign d_month = include.date | date: "%-m" | minus: 1 -%}
+{%- assign d_day = include.date | date: "%-d" -%}
+{%- assign d_months = site.data.i18n[include.lang].months -%}
+<time datetime="{{ include.date | date: '%Y-%m-%d' }}">
+{%- if include.lang == "fr" -%}
+{%- if d_day == "1" -%}1<sup>er</sup>{%- else -%}{{ d_day }}{%- endif %} {{ d_months[d_month] }} {{ include.date | date: "%Y" }}
+{%- else -%}
+{{ d_months[d_month] }} {{ d_day }}, {{ include.date | date: "%Y" }}
+{%- endif -%}
+</time>

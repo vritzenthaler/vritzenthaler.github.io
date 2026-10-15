@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-name">{{ site.data.site.name }} <span class="footer-year">· {{ site.time | date: "%Y" }}</span></p>
+    <ul class="footer-links">
+      <li><a href="{{ site.data.site.linkedin }}" rel="me">{{ t.footer.contact }} <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/' | append: lang | append: '/publications/' | relative_url }}">{{ t.nav.publications }}</a></li>
+      <li><a href="{{ '/' | append: lang | append: '/blog/' | relative_url }}">{{ t.nav.blog }}</a></li>
+    </ul>
+    <p class="footer-note">{{ t.footer.built }}</p>
+  </div>
+</footer>

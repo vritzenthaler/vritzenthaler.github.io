@@ -1,0 +1,20 @@
+<svg class="trajectory" viewBox="0 0 480 320" width="480" height="320" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="currentColor" stroke-linecap="round">
+    <path class="traj-axis" d="M8 290 H458" stroke-dasharray="4 6" stroke-width="1"/>
+    <path class="traj-axis" d="M332 302 V110" stroke-dasharray="4 6" stroke-width="1"/>
+    <path class="traj-ghost" d="M36 290 C 150 286, 250 258, 320 186 S 424 52, 452 30" stroke-dasharray="2 6" stroke-width="1"/>
+    <path class="traj-ghost" d="M16 290 C 110 246, 196 214, 312 168" stroke-dasharray="2 6" stroke-width="1"/>
+    <path class="traj-main" pathLength="1" d="M120 290 C 128 228, 168 170, 240 140 S 352 112, 396 106 C 424 84, 444 54, 458 24" stroke-width="1.5"/>
+  </g>
+  <g class="traj-points" fill="currentColor">
+    <circle cx="120" cy="290" r="4"/>
+    <circle cx="240" cy="140" r="4"/>
+    <circle cx="396" cy="106" r="3"/>
+  </g>
+  <circle class="traj-end" cx="458" cy="24" r="5" stroke="currentColor" stroke-width="1.5"/>
+  <g class="traj-labels" fill="currentColor">
+    <text x="404" y="200">x(t)</text>
+    <text x="404" y="220">y(t)</text>
+    <text x="404" y="246">→ ?</text>
+  </g>
+</svg>

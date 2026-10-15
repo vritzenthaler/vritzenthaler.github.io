@@ -1,0 +1,32 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="site-name" href="{{ '/' | append: lang | append: '/' | relative_url }}">{{ site.data.site.name }}</a>
+    <div class="header-nav">
+      <nav class="site-nav" aria-label="{{ t.nav_label }}">
+        <ul>
+          {%- assign nav_items = "home,publications,blog" | split: "," -%}
+          {%- for item in nav_items -%}
+          {%- if item == "home" -%}{%- assign item_url = "/" | append: lang | append: "/" -%}{%- else -%}{%- assign item_url = "/" | append: lang | append: "/" | append: item | append: "/" -%}{%- endif %}
+          <li><a href="{{ item_url | relative_url }}"{% if section == item %}{% if is_post %} aria-current="true"{% else %} aria-current="page"{% endif %}{% endif %}>{{ t.nav[item] }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+      <nav class="lang-switch" aria-label="{{ t.lang_label }}">
+        <ul>
+          {%- for l in site.languages -%}
+          {%- assign l_label = l | upcase %}
+          <li>
+            {%- if l == lang -%}
+            <span class="lang-current" aria-current="true" lang="{{ l }}"><abbr title="{{ site.data.i18n[l].lang_name }}">{{ l_label }}</abbr></span>
+            {%- elsif alt_missing and is_post -%}
+            <a href="{{ alt_url | relative_url }}" hreflang="{{ l }}" lang="{{ l }}" class="lang-missing" title="{{ t.switch.missing }}" aria-label="{{ t.switch.missing }}">{{ l_label }}</a>
+            {%- else -%}
+            <a href="{{ alt_url | relative_url }}" hreflang="{{ l }}" lang="{{ l }}" title="{{ site.data.i18n[l].lang_name }}">{{ l_label }}</a>
+            {%- endif -%}
+          </li>
+          {%- endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

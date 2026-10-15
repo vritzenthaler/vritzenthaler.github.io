@@ -1,0 +1,22 @@
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- if lang == "fr" -%}{%- assign other = "en" -%}{%- else -%}{%- assign other = "fr" -%}{%- endif -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- assign is_post = false -%}
+{%- if page.collection == "posts" -%}{%- assign is_post = true -%}{%- endif -%}
+{%- assign alt = nil -%}
+{%- if page.ref -%}
+  {%- if is_post -%}
+    {%- assign alt = site.posts | where: "ref", page.ref | where: "lang", other | first -%}
+  {%- else -%}
+    {%- assign alt = site.pages | where: "ref", page.ref | where: "lang", other | where_exp: "p", "p.i18n_skip != true" | first -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if alt -%}
+  {%- assign alt_url = alt.url -%}
+  {%- assign alt_missing = false -%}
+{%- else -%}
+  {%- assign alt_missing = true -%}
+  {%- if is_post -%}{%- assign alt_url = "/" | append: other | append: "/blog/" -%}{%- else -%}{%- assign alt_url = "/" | append: other | append: "/" -%}{%- endif -%}
+{%- endif -%}
+{%- assign section = page.ref -%}
+{%- if is_post -%}{%- assign section = "blog" -%}{%- endif -%}

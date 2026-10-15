@@ -1,0 +1,57 @@
+---
+layout: default
+---
+{%- include i18n.html -%}
+{%- assign h = site.data.home[lang] -%}
+<section class="hero wrap">
+  <div class="hero-text">
+    <h1 class="display">{{ h.headline }}</h1>
+    <p class="lede">{{ h.intro }}</p>
+    <p class="hero-link"><a class="link-arrow" href="{{ '/' | append: lang | append: '/publications/' | relative_url }}">{{ h.intro_link_label }}<span class="arrow" aria-hidden="true">→</span></a></p>
+  </div>
+  <div class="hero-figure" aria-hidden="true">
+    {%- if h.annotation %}<p class="annotation">{{ h.annotation }}</p>{% endif %}
+    {% include trajectory.svg %}
+  </div>
+</section>
+
+{%- if h.current.size > 0 %}
+<section class="wrap section" aria-labelledby="current-title">
+  <div class="section-head">
+    <h2 id="current-title" class="eyebrow">{{ h.current_label }}</h2>
+    <span class="section-rule" aria-hidden="true"></span>
+    <span class="eyebrow eyebrow-count" aria-hidden="true">01 — {{ h.current.size | prepend: "0" | slice: -2, 2 }}</span>
+  </div>
+  <ol class="ruled-list">
+    {%- for item in h.current %}
+    {%- assign external = false -%}
+    {%- if item.url contains "://" -%}{%- assign external = true -%}{%- endif %}
+    <li class="ruled-item">
+      <span class="ruled-num" aria-hidden="true">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
+      <span class="ruled-dash" aria-hidden="true"></span>
+      <h3 class="ruled-title">
+        {%- if item.url -%}
+        <a class="stretched" href="{% if external %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
+        {%- else -%}{{ item.title }}{%- endif -%}
+      </h3>
+      <p class="ruled-desc">{{ item.description }}</p>
+      {%- if item.url %}<span class="ruled-arrow" aria-hidden="true">{% if external %}↗{% else %}→{% endif %}</span>{% endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- endif %}
+
+<section class="wrap section contact" aria-labelledby="contact-title">
+  <div class="section-head">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>{{ h.contact_label }}</p>
+    <span class="section-rule" aria-hidden="true"></span>
+  </div>
+  <div class="contact-body">
+    <h2 id="contact-title" class="contact-title">{{ h.contact_title }}</h2>
+    <div>
+      <p class="contact-text">{{ h.contact_text }}</p>
+      <p><a class="link-arrow" href="{{ site.data.site.linkedin }}" rel="me">{{ h.contact_link_label }}<span class="arrow" aria-hidden="true">↗</span></a></p>
+    </div>
+  </div>
+</section>

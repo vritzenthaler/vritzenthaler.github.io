@@ -1,0 +1,42 @@
+en:
+  meta_title: Valentin Ritzenthaler, applied mathematics and AI
+  headline: From ideas to experiments.
+  annotation: Always researching.
+  intro: >-
+    I'm Valentin, a doctor in applied mathematics based in Barcelona.
+    I spent years designing numerical methods for electromagnetic simulation,
+    and I now build and test AI systems with the same obsession for rigour.
+  intro_link_label: Read my publications
+  current_label: Currently working on
+  current:
+    - title: Reliability of AI agents
+      description: Reproducible experiments to measure when and why AI agents fail, and how to make them more reliable.
+      url: https://github.com/vritzenthaler/Agent-Reliability-Lab
+    - title: Numerical simulation
+      description: Compatible discrete operator schemes for Maxwell's equations on polyhedral meshes, from analysis to code.
+      url: /en/publications/
+  contact_label: Contact
+  contact_title: Let's talk.
+  contact_text: A project, a question about simulation or AI, or simply an idea to discuss. LinkedIn is the best way to reach me.
+  contact_link_label: Write to me on LinkedIn
+fr:
+  meta_title: Valentin Ritzenthaler, mathématiques appliquées et IA
+  headline: Des idées aux expériences.
+  annotation: Toujours en recherche.
+  intro: >-
+    Je suis Valentin, docteur en mathématiques appliquées, installé à Barcelone.
+    J’ai passé plusieurs années à concevoir des méthodes numériques pour la simulation
+    électromagnétique ; je construis et j’éprouve aujourd’hui des systèmes d’IA avec la même exigence de rigueur.
+  intro_link_label: Lire mes publications
+  current_label: En ce moment
+  current:
+    - title: Fiabilité des agents IA
+      description: Des expériences reproductibles pour mesurer quand et pourquoi les agents IA échouent, et comment les rendre plus fiables.
+      url: https://github.com/vritzenthaler/Agent-Reliability-Lab
+    - title: Simulation numérique
+      description: Schémas à opérateurs discrets compatibles pour les équations de Maxwell sur maillages polyédriques, de l’analyse au code.
+      url: /fr/publications/
+  contact_label: Contact
+  contact_title: Discutons.
+  contact_text: Un projet, une question de simulation ou d’IA, ou simplement une idée à creuser. LinkedIn est le meilleur moyen de me joindre.
+  contact_link_label: M’écrire sur LinkedIn

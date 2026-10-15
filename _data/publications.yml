@@ -1,0 +1,30 @@
+- status: preprint
+  type: article
+  title: Analysis of Compatible Discrete Operator schemes on polyhedral meshes for Maxwell's equations in the time domain
+  authors: V. Ritzenthaler
+  year: 2026
+  venue: Preprint
+  language: en
+  doi: ""
+  url: ""
+  pdf: /assets/papers/ritzenthaler-2026-cdo-maxwell-preprint.pdf
+- status: published
+  type: thesis
+  title: Stratégies de couplage des méthodes Compatible Discrete Operators appliquées aux équations de Maxwell dans le domaine temporel
+  authors: V. Ritzenthaler
+  year: 2024
+  venue: Université de Toulouse, ISAE-SUPAERO
+  language: fr
+  doi: ""
+  url: ""
+  pdf: https://depozit.isae.fr/theses/2024/2024_Ritzenthaler_Valentin.pdf
+- status: published
+  type: article
+  title: Robust Scheme on 3D Hybrid Meshes with Non-conformity for Maxwell’s Equations in Time Domain
+  authors: V. Ritzenthaler, P. Cantin, X. Ferrieres
+  year: 2024
+  venue: Journal of Scientific Computing, 99, 73
+  language: en
+  doi: 10.1007/s10915-024-02533-1
+  url: ""
+  pdf: ""

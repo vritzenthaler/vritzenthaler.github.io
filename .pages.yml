@@ -1,0 +1,408 @@
+media:
+  - name: images
+    label: Images
+    input: assets/images
+    output: /assets/images
+    categories: [image]
+    rename: safe
+  - name: papers
+    label: Articles PDF
+    input: assets/papers
+    output: /assets/papers
+    categories: [document]
+    rename: safe
+
+components:
+  home:
+    type: object
+    fields:
+      - name: meta_title
+        label: Titre de l’onglet
+        type: string
+      - name: headline
+        label: Grand titre
+        type: string
+        required: true
+      - name: annotation
+        label: Annotation manuscrite
+        type: string
+        description: Courte note façon carnet, laisser vide pour la masquer.
+      - name: intro
+        label: Présentation
+        type: text
+        required: true
+      - name: intro_link_label
+        label: Libellé du lien vers les publications
+        type: string
+      - name: current_label
+        label: Titre de la section « En ce moment »
+        type: string
+      - name: current
+        label: Travaux en cours
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Titre
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: text
+          - name: url
+            label: Lien
+            type: string
+            description: URL complète (https://…) ou chemin interne (/fr/publications/).
+      - name: contact_label
+        label: Étiquette de la section contact
+        type: string
+      - name: contact_title
+        label: Titre de la section contact
+        type: string
+      - name: contact_text
+        label: Texte de contact
+        type: text
+      - name: contact_link_label
+        label: Libellé du lien LinkedIn
+        type: string
+
+content:
+  - name: blog
+    label: Blog
+    type: group
+    items:
+      - name: posts_fr
+        label: Articles en français
+        type: collection
+        path: fr/_posts
+        filename: "{year}-{month}-{day}-{primary}.md"
+        view:
+          fields: [title, date, ref, published]
+          primary: title
+          sort: [date, title]
+          default:
+            sort: date
+            order: desc
+        fields:
+            - name: title
+              label: Titre
+              type: string
+              required: true
+            - name: date
+              label: Date de publication
+              type: date
+              required: true
+              options:
+                format: yyyy-MM-dd
+            - name: ref
+              label: Identifiant de traduction
+              type: string
+              required: true
+              pattern:
+                regex: "^[a-z0-9-]+$"
+                message: "Minuscules, chiffres et tirets uniquement"
+              description: Même valeur dans la version FR et EN d’un article (ex. two-simulations). Ne pas modifier après publication.
+            - name: summary
+              label: Résumé
+              type: text
+              required: true
+              description: Affiché dans la liste du blog, sous le titre de l’article et dans les aperçus de partage.
+            - name: image
+              label: Illustration
+              type: image
+              description: Format 3:2 conseillé (1200 × 800), WebP ou JPG optimisé.
+              options:
+                media: images
+                path: blog
+            - name: image_alt
+              label: Texte alternatif de l’illustration
+              type: text
+              description: Décrire l’image pour les personnes qui ne la voient pas.
+            - name: image_caption
+              label: Légende
+              type: string
+            - name: published
+              label: Publié
+              type: boolean
+              default: false
+              description: Désactivé = brouillon, absent du site public.
+            - name: body
+              label: Contenu
+              type: rich-text
+              options:
+                format: markdown
+                media: images
+                path: blog
+        format: yaml-frontmatter
+      - name: posts_en
+        label: Articles en anglais
+        type: collection
+        path: en/_posts
+        filename: "{year}-{month}-{day}-{primary}.md"
+        view:
+          fields: [title, date, ref, published]
+          primary: title
+          sort: [date, title]
+          default:
+            sort: date
+            order: desc
+        fields:
+            - name: title
+              label: Titre
+              type: string
+              required: true
+            - name: date
+              label: Date de publication
+              type: date
+              required: true
+              options:
+                format: yyyy-MM-dd
+            - name: ref
+              label: Identifiant de traduction
+              type: string
+              required: true
+              pattern:
+                regex: "^[a-z0-9-]+$"
+                message: "Minuscules, chiffres et tirets uniquement"
+              description: Même valeur dans la version FR et EN d’un article (ex. two-simulations). Ne pas modifier après publication.
+            - name: summary
+              label: Résumé
+              type: text
+              required: true
+              description: Affiché dans la liste du blog, sous le titre de l’article et dans les aperçus de partage.
+            - name: image
+              label: Illustration
+              type: image
+              description: Format 3:2 conseillé (1200 × 800), WebP ou JPG optimisé.
+              options:
+                media: images
+                path: blog
+            - name: image_alt
+              label: Texte alternatif de l’illustration
+              type: text
+              description: Décrire l’image pour les personnes qui ne la voient pas.
+            - name: image_caption
+              label: Légende
+              type: string
+            - name: published
+              label: Publié
+              type: boolean
+              default: false
+              description: Désactivé = brouillon, absent du site public.
+            - name: body
+              label: Contenu
+              type: rich-text
+              options:
+                format: markdown
+                media: images
+                path: blog
+        format: yaml-frontmatter
+
+  - name: home
+    label: Accueil (FR / EN)
+    type: file
+    path: _data/home.yml
+    format: yaml
+    fields:
+      - name: fr
+        label: Français
+        component: home
+      - name: en
+        label: English
+        component: home
+
+  - name: publications
+    label: Publications
+    type: file
+    path: _data/publications.yml
+    format: yaml
+    list: true
+    fields:
+      - name: status
+        label: Catégorie
+        type: select
+        required: true
+        options:
+          values:
+            - name: preprint
+              label: Prépublication
+            - name: published
+              label: Publiée
+      - name: type
+        label: Type
+        type: select
+        options:
+          values:
+            - name: article
+              label: Article
+            - name: thesis
+              label: Thèse
+      - name: title
+        label: Titre original
+        type: string
+        required: true
+      - name: authors
+        label: Auteurs
+        type: string
+        required: true
+      - name: year
+        label: Année
+        type: number
+        required: true
+      - name: venue
+        label: Revue, conférence ou établissement
+        type: string
+      - name: language
+        label: Langue du document (en, fr…)
+        type: string
+      - name: doi
+        label: DOI (sans https://doi.org/)
+        type: string
+      - name: url
+        label: Autre lien
+        type: string
+      - name: pdf
+        label: PDF (fichier du site ou URL)
+        type: file
+        options:
+          media: papers
+
+  - name: pages
+    label: Pages
+    type: group
+    items:
+      - name: publications_fr
+        label: Publications (FR)
+        type: file
+        path: fr/publications/index.md
+        format: yaml-frontmatter
+        fields:
+            - name: layout
+              type: string
+              hidden: true
+            - name: ref
+              type: string
+              hidden: true
+            - name: permalink
+              type: string
+              hidden: true
+            - name: title
+              label: Titre
+              type: string
+              required: true
+            - name: description
+              label: Description pour les moteurs de recherche
+              type: text
+            - name: intro
+              label: Introduction
+              type: text
+      - name: publications_en
+        label: Publications (EN)
+        type: file
+        path: en/publications/index.md
+        format: yaml-frontmatter
+        fields:
+            - name: layout
+              type: string
+              hidden: true
+            - name: ref
+              type: string
+              hidden: true
+            - name: permalink
+              type: string
+              hidden: true
+            - name: title
+              label: Titre
+              type: string
+              required: true
+            - name: description
+              label: Description pour les moteurs de recherche
+              type: text
+            - name: intro
+              label: Introduction
+              type: text
+      - name: blog_fr
+        label: Blog (FR)
+        type: file
+        path: fr/blog/index.md
+        format: yaml-frontmatter
+        fields:
+            - name: layout
+              type: string
+              hidden: true
+            - name: ref
+              type: string
+              hidden: true
+            - name: permalink
+              type: string
+              hidden: true
+            - name: title
+              label: Titre
+              type: string
+              required: true
+            - name: description
+              label: Description pour les moteurs de recherche
+              type: text
+            - name: intro
+              label: Introduction
+              type: text
+      - name: blog_en
+        label: Blog (EN)
+        type: file
+        path: en/blog/index.md
+        format: yaml-frontmatter
+        fields:
+            - name: layout
+              type: string
+              hidden: true
+            - name: ref
+              type: string
+              hidden: true
+            - name: permalink
+              type: string
+              hidden: true
+            - name: title
+              label: Titre
+              type: string
+              required: true
+            - name: description
+              label: Description pour les moteurs de recherche
+              type: text
+            - name: intro
+              label: Introduction
+              type: text
+
+  - name: site
+    label: Informations communes
+    type: file
+    path: _data/site.yml
+    format: yaml
+    fields:
+      - name: name
+        label: Nom affiché
+        type: string
+        required: true
+      - name: linkedin
+        label: URL LinkedIn
+        type: string
+        required: true
+      - name: github
+        label: URL GitHub
+        type: string
+      - name: fr
+        label: Français
+        type: object
+        fields:
+          - name: description
+            label: Description par défaut
+            type: text
+      - name: en
+        label: English
+        type: object
+        fields:
+          - name: description
+            label: Default description
+            type: text

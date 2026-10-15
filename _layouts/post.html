@@ -1,0 +1,31 @@
+---
+layout: default
+---
+{%- include i18n.html -%}
+<article class="post">
+  <div class="wrap narrow">
+    <p class="back"><a href="{{ '/' | append: lang | append: '/blog/' | relative_url }}"><span aria-hidden="true">← </span>{{ t.blog.back }}</a></p>
+    <header class="post-header">
+      <p class="post-date">{% include date.html date=page.date lang=lang %}</p>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {%- if page.summary %}<p class="lede">{{ page.summary }}</p>{% endif %}
+    </header>
+    {%- if alt_missing %}
+    <p class="notice">{{ t.blog.untranslated }} <a href="{{ alt_url | relative_url }}" hreflang="{{ other }}">{{ t.blog.other_list }}</a></p>
+    {%- endif %}
+  </div>
+  {%- if page.image %}
+  <figure class="post-figure wrap">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="1200" height="800" fetchpriority="high" decoding="async">
+    {%- if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+  </figure>
+  {%- endif %}
+  <div class="wrap narrow">
+    <div class="prose">
+{{ content }}
+    </div>
+    <footer class="post-footer">
+      <a href="{{ '/' | append: lang | append: '/blog/' | relative_url }}"><span aria-hidden="true">← </span>{{ t.blog.back }}</a>
+    </footer>
+  </div>
+</article>

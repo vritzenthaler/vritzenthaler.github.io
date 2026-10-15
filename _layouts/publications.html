@@ -1,0 +1,42 @@
+---
+layout: default
+---
+{%- include i18n.html -%}
+<header class="wrap page-head">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {%- if page.intro %}<p class="lede">{{ page.intro }}</p>{% endif %}
+</header>
+{%- assign statuses = "preprint,published" | split: "," -%}
+{%- for status in statuses %}
+{%- assign pubs = site.data.publications | where: "status", status -%}
+{%- if pubs.size > 0 %}
+<section class="wrap section" aria-labelledby="pub-{{ status }}">
+  <div class="section-head">
+    <h2 id="pub-{{ status }}" class="eyebrow">{{ t.publications[status] }}</h2>
+    <span class="section-rule" aria-hidden="true"></span>
+    <span class="eyebrow eyebrow-count" aria-hidden="true">{{ pubs.size | prepend: "0" | slice: -2, 2 }}</span>
+  </div>
+  <ol class="pub-list">
+    {%- for pub in pubs %}
+    <li class="pub">
+      <p class="pub-year">{{ pub.year }}</p>
+      <div class="pub-body">
+        <h3 class="pub-title"{% if pub.language and pub.language != lang %} lang="{{ pub.language }}"{% endif %}>{{ pub.title }}</h3>
+        <p class="pub-authors">{{ pub.authors | escape | replace: "V. Ritzenthaler", "<strong>V. Ritzenthaler</strong>" }}</p>
+        <p class="pub-venue">{% if pub.type == "thesis" %}{{ t.publications.thesis }}, {% endif %}<span{% if pub.type == "thesis" and pub.language != lang %} lang="{{ pub.language }}"{% endif %}>{{ pub.venue }}</span></p>
+        <p class="pub-links">
+          {%- if pub.doi and pub.doi != "" %}<a href="https://doi.org/{{ pub.doi }}">{{ t.publications.doi }}<span class="pub-doi"> {{ pub.doi }}</span> <span aria-hidden="true">↗</span></a>{% endif %}
+          {%- if pub.pdf and pub.pdf != "" %}
+          {%- if pub.pdf contains "://" %}<a href="{{ pub.pdf }}">{{ t.publications.pdf }} <span aria-hidden="true">↗</span></a>
+          {%- else %}<a href="{{ pub.pdf | relative_url }}" download type="application/pdf">{{ t.publications.pdf }} <span aria-hidden="true">↓</span></a>{% endif %}
+          {%- endif %}
+          {%- if pub.url and pub.url != "" %}<a href="{{ pub.url }}">{{ t.publications.link }} <span aria-hidden="true">↗</span></a>{% endif %}
+          {%- if pub.language and pub.language != "en" and pub.language != lang %}<span class="tag">{{ t.publications.in_language }}</span>{% endif %}
+        </p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- endif %}
+{%- endfor %}

@@ -1,0 +1,33 @@
+title: Valentin Ritzenthaler
+url: "https://vritzenthaler.github.io"
+baseurl: ""
+default_lang: en
+languages: [en, fr]
+
+timezone: Europe/Madrid
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+permalink: pretty
+future: false
+
+defaults:
+  - scope: { path: "en" }
+    values: { lang: en }
+  - scope: { path: "fr" }
+    values: { lang: fr }
+  - scope: { path: "en", type: posts }
+    values: { layout: post, permalink: "/en/blog/:slug/" }
+  - scope: { path: "fr", type: posts }
+    values: { layout: post, permalink: "/fr/blog/:slug/" }
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .bundle
+  - .jekyll-cache
+  - tools
