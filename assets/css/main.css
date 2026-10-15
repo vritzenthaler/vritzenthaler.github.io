@@ -40,8 +40,8 @@
   --ink: #252b2a;
   --ink-soft: #545c5a;
   --blue: #2455d6;
-  --blue-deep: #1a3fa6;
   --terre: #b85f3d;
+  --terre-deep: #9c4a2c;
   --brume: #a9bbc5;
   --rule: rgba(37, 43, 42, 0.14);
   --rule-strong: rgba(37, 43, 42, 0.3);
@@ -113,20 +113,22 @@ p {
 }
 
 a {
-  color: var(--blue);
+  color: var(--ink);
   text-decoration-line: underline;
+  text-decoration-color: var(--terre);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.22em;
   transition: color 0.15s var(--ease), text-decoration-color 0.15s var(--ease);
 }
 
 a:hover {
-  color: var(--blue-deep);
+  color: var(--terre-deep);
+  text-decoration-color: var(--terre-deep);
   text-decoration-thickness: 2px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--terre-deep);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -223,8 +225,8 @@ abbr[title] {
 }
 
 .site-nav a:hover {
-  color: var(--blue);
-  text-decoration-color: currentColor;
+  color: var(--terre-deep);
+  text-decoration-color: var(--terre-deep);
 }
 
 .site-nav a[aria-current] {
@@ -269,7 +271,7 @@ abbr[title] {
 }
 
 .lang-switch a:hover {
-  color: var(--blue);
+  color: var(--terre-deep);
 }
 
 .lang-current {
@@ -526,7 +528,7 @@ abbr[title] {
 
 .ruled-item:hover .ruled-title a,
 .ruled-item:hover .ruled-arrow {
-  color: var(--blue);
+  color: var(--terre-deep);
 }
 
 .ruled-item:hover .ruled-arrow {
@@ -721,7 +723,7 @@ abbr[title] {
 }
 
 .post-card:hover .post-card-title a {
-  color: var(--blue);
+  color: var(--terre-deep);
 }
 
 .post-card-summary {
@@ -733,7 +735,16 @@ abbr[title] {
 .post-card-more {
   margin: 1rem 0 0;
   font-size: 0.95rem;
-  color: var(--blue);
+  color: var(--ink);
+  text-decoration: underline 1px var(--terre);
+  text-underline-offset: 0.22em;
+  transition: color 0.15s var(--ease);
+}
+
+.post-card:hover .post-card-more {
+  color: var(--terre-deep);
+  text-decoration-color: var(--terre-deep);
+  text-decoration-thickness: 2px;
 }
 
 .post-card:hover .post-card-more .arrow {
@@ -944,7 +955,7 @@ abbr[title] {
 }
 
 .footer-links a:hover {
-  color: var(--blue);
+  color: var(--terre-deep);
 }
 
 .footer-note {
