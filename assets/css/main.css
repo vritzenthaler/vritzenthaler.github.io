@@ -1006,6 +1006,41 @@ abbr[title] {
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  .site-header {
+    view-transition-name: site-header;
+  }
+
+  ::view-transition-group(site-header) {
+    animation-duration: 0.2s;
+  }
+
+  ::view-transition-old(root) {
+    animation: page-out 0.16s var(--ease) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-in 0.32s var(--ease) 0.06s both;
+  }
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
 @keyframes traj-draw {
   to {
     stroke-dashoffset: 0;
