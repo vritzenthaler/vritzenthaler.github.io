@@ -35,6 +35,28 @@
   line-height: 1.65;
 }
 
+@supports (content-visibility: auto) and (contain-intrinsic-block-size: auto 2000px) and selector(html:has(> body.layout-reader)) {
+  html:has(> body.layout-reader) {
+    scroll-behavior: auto;
+  }
+
+  .reader-paper .ltx_section,
+  .reader-paper .ltx_appendix,
+  .reader-paper .ltx_bibliography {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 2000px;
+  }
+
+  @media print {
+    .reader-paper .ltx_section,
+    .reader-paper .ltx_appendix,
+    .reader-paper .ltx_bibliography {
+      content-visibility: visible;
+      contain-intrinsic-block-size: none;
+    }
+  }
+}
+
 .reader-paper .ltx_title_document {
   text-align: center;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
