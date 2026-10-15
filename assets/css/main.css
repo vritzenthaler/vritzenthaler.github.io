@@ -877,6 +877,17 @@ abbr[title] {
   margin: 0;
 }
 
+.prose .katex {
+  font-size: 1.05em;
+}
+
+.prose .katex-display {
+  margin: 1.6em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25em;
+}
+
 .prose code {
   padding: 0.1em 0.3em;
   background: var(--paper-deep);

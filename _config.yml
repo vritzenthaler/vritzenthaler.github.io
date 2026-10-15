@@ -10,6 +10,7 @@ kramdown:
   input: GFM
   hard_wrap: false
   smart_quotes: lsquo,rsquo,ldquo,rdquo
+  math_engine: katex
 permalink: pretty
 future: false
 

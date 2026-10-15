@@ -130,12 +130,11 @@ content:
               default: false
               description: Désactivé = brouillon, absent du site public.
             - name: body
-              label: Contenu
-              type: rich-text
+              label: Contenu (Markdown)
+              type: code
+              description: "Markdown. Équations KaTeX : $$...$$ dans une phrase pour une équation en ligne, $$...$$ seul sur sa ligne (ligne vide avant et après) pour une équation centrée. Images : téléverser dans la médiathèque puis ![texte alternatif](/assets/images/blog/nom.webp)."
               options:
                 format: markdown
-                media: images
-                path: blog
         format: yaml-frontmatter
       - name: posts_en
         label: Articles en anglais
@@ -193,12 +192,11 @@ content:
               default: false
               description: Désactivé = brouillon, absent du site public.
             - name: body
-              label: Contenu
-              type: rich-text
+              label: Contenu (Markdown)
+              type: code
+              description: "Markdown. Équations KaTeX : $$...$$ dans une phrase pour une équation en ligne, $$...$$ seul sur sa ligne (ligne vide avant et après) pour une équation centrée. Images : téléverser dans la médiathèque puis ![texte alternatif](/assets/images/blog/nom.webp)."
               options:
                 format: markdown
-                media: images
-                path: blog
         format: yaml-frontmatter
 
   - name: home

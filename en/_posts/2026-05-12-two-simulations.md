@@ -21,13 +21,19 @@ Take this remark seriously and you can see physical quantities as things you eva
 
 In a lab, if I double the number of sensors without ever placing two at the same spot, I double the information I have about the field I am measuring.
 
-So why not do the same in simulation? Two meshes that coincide nowhere, two independent simulations, and a field known “twice as well”. Yet classical theory is clear: the error is measured by the mesh size, written *h*, and two simulations with the same mesh size remain *O(h)*. Nothing gained, on paper.
+So why not do the same in simulation? Two meshes that coincide nowhere, two independent simulations, and a field known “twice as well”. Yet classical theory is clear: the error is measured by the mesh size $$h$$,
+
+$$
+\| u - u_h \| \leq C \, h,
+$$
+
+and two simulations with the same mesh size remain $$\mathcal{O}(h)$$. Nothing gained, on paper.
 
 One of the two views had to be wrong. I was secretly hoping it would be the classical one.
 
 ## The experiment
 
-Rather than theorising for weeks, I took the simplest possible case: the equation *−u″ = f* on a segment. Two offset meshes, two approximate solutions, then a form that coincides with each of them on its own points.
+Rather than theorising for weeks, I took the simplest possible case: the equation $$-u'' = f$$ on the segment $$[0, 1]$$. Two offset meshes, two approximate solutions, then a form that coincides with each of them on its own points.
 
 The result: in the middle of the segment, the scheme gets it right. But as soon as I move the evaluation point, the value does not move the way it should. The physical law is satisfied on each of the two meshes… and yet combining them gets no closer to the exact solution than a single finer mesh.
 

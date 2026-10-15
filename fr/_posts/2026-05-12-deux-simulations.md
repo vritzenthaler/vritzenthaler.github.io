@@ -21,13 +21,19 @@ Si on prend cette remarque au sérieux, on peut voir les grandeurs physiques com
 
 Dans un laboratoire, si je double le nombre de capteurs sans jamais en placer deux au même endroit, je double l’information dont je dispose sur le champ que je mesure.
 
-Alors pourquoi ne pas faire pareil en simulation ? Deux maillages qui ne coïncident nulle part, deux simulations indépendantes, et le champ connu « deux fois mieux ». Pourtant, la théorie classique est formelle : l’erreur se mesure avec le pas du maillage, noté *h*, et deux simulations au même pas restent en *O(h)*. Rien ne gagne, sur le papier.
+Alors pourquoi ne pas faire pareil en simulation ? Deux maillages qui ne coïncident nulle part, deux simulations indépendantes, et le champ connu « deux fois mieux ». Pourtant, la théorie classique est formelle : l’erreur se mesure avec le pas du maillage $$h$$,
+
+$$
+\| u - u_h \| \leq C \, h,
+$$
+
+et deux simulations au même pas restent en $$\mathcal{O}(h)$$. Rien ne gagne, sur le papier.
 
 L’une des deux visions devait se tromper. J’espérais secrètement que ce soit la théorie classique.
 
 ## L’expérience
 
-Plutôt que de théoriser pendant des semaines, j’ai pris le cas le plus simple possible : l’équation *−u″ = f* sur un segment. Deux maillages décalés, deux solutions approchées, puis une forme qui coïncide avec chacune sur ses propres points.
+Plutôt que de théoriser pendant des semaines, j’ai pris le cas le plus simple possible : l’équation $$-u'' = f$$ sur le segment $$[0, 1]$$. Deux maillages décalés, deux solutions approchées, puis une forme qui coïncide avec chacune sur ses propres points.
 
 Résultat : au milieu du segment, le schéma tombe juste. Mais dès que je déplace le point de calcul, la valeur ne bouge pas comme elle devrait. La loi physique est bien respectée sur chacun des deux maillages… et pourtant la combinaison des deux ne s’approche pas mieux de la solution exacte qu’un seul maillage plus fin.
 
