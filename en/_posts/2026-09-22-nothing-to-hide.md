@@ -31,7 +31,7 @@ Four places, four moments. Your home, your office, your gym, the Saturday café.
 
 $$y = ax +b$$ 
 
-This is an inline test $y=f(x)$. 
+This is an inline test $$y=f(x)$$. 
 
 ## The motive is always noble
 
