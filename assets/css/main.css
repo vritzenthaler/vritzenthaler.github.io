@@ -201,8 +201,7 @@ abbr[title] {
 }
 
 .site-nav ul,
-.lang-switch ul,
-.footer-links {
+.lang-switch ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -503,10 +502,6 @@ abbr[title] {
   .layout-home .site-footer {
     margin-top: 0;
     padding-block: clamp(0.5rem, 1.4vh, 1.1rem);
-  }
-
-  .layout-home .footer-links a {
-    padding-block: 0.1rem;
   }
 }
 
@@ -915,20 +910,6 @@ abbr[title] {
   font-family: var(--sans);
   font-size: 0.92rem;
   color: var(--ink-soft);
-}
-
-.footer-links {
-  gap: 0.25rem 1.5rem;
-}
-
-.footer-links a {
-  display: inline-block;
-  padding-block: 0.35rem;
-  color: var(--ink);
-}
-
-.footer-links a:hover {
-  color: var(--terre-deep);
 }
 
 .footer-note {

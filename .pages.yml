@@ -41,6 +41,9 @@ components:
       - name: blog_link_label
         label: Libellé du lien vers le blog
         type: string
+      - name: contact_link_label
+        label: Libellé du lien LinkedIn
+        type: string
 
 content:
   - name: blog

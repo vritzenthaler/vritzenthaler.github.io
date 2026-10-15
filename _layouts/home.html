@@ -12,6 +12,9 @@ layout: default
       {%- if h.blog_link_label %}
       <a class="link-arrow" href="{{ '/' | append: lang | append: '/blog/' | relative_url }}">{{ h.blog_link_label }}<span class="arrow" aria-hidden="true">→</span></a>
       {%- endif %}
+      {%- if h.contact_link_label %}
+      <a class="link-arrow" href="{{ site.data.site.linkedin }}" rel="me">{{ h.contact_link_label }}<span class="arrow" aria-hidden="true">↗</span></a>
+      {%- endif %}
     </p>
   </div>
   <div class="hero-figure{% if h.annotation and h.annotation != '' %} has-annotation{% endif %}" aria-hidden="true">

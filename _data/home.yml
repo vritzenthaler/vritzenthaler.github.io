@@ -9,6 +9,7 @@ en:
     easy answers, and to the careful work of finding out what holds up.
   intro_link_label: Read my research
   blog_link_label: Explore my ideas
+  contact_link_label: Get in touch
 fr:
   meta_title: Valentin Ritzenthaler, mathématiques appliquées et IA
   headline: Truth begins where easy answers end.
@@ -22,3 +23,4 @@ fr:
     qui consiste à vérifier ce qui tient vraiment.
   intro_link_label: Lire mes recherches
   blog_link_label: Découvrir mes idées
+  contact_link_label: Me contacter

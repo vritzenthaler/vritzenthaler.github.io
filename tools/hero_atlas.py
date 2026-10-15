@@ -89,8 +89,11 @@ def arrowhead(x, y, angle, size=12):
             f'L {x + size * math.cos(a2):.1f} {y + size * math.sin(a2):.1f}')
 
 
+SLOWDOWN = 1.5  # scales every delay and duration of the sketch animation
+
+
 def anim(kind, delay, duration):
-    return f' class="{kind}" style="animation-delay:{delay:g}s;animation-duration:{duration:g}s"'
+    return f' class="{kind}" style="animation-delay:{delay * SLOWDOWN:.2f}s;animation-duration:{duration * SLOWDOWN:.2f}s"'
 
 
 def pencil(inner, kind=None, delay=0, duration=0):
