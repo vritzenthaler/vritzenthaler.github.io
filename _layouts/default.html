@@ -4,7 +4,7 @@
 <head>
 {% include head.html %}
 </head>
-<body>
+<body class="layout-{{ page.layout | default: "page" }}">
 <a class="skip-link" href="#main">{{ t.skip }}</a>
 {% include header.html %}
 <main id="main" tabindex="-1">

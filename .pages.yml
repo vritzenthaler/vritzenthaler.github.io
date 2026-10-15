@@ -23,6 +23,10 @@ components:
         label: Grand titre
         type: string
         required: true
+      - name: headline_lang
+        label: Langue du grand titre
+        type: string
+        description: À remplir seulement si le titre est dans une autre langue que la page (ex. en).
       - name: annotation
         label: Annotation manuscrite
         type: string
@@ -34,28 +38,6 @@ components:
       - name: intro_link_label
         label: Libellé du lien vers les publications
         type: string
-      - name: current_label
-        label: Titre de la section « En ce moment »
-        type: string
-      - name: current
-        label: Travaux en cours
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title}"
-        fields:
-          - name: title
-            label: Titre
-            type: string
-            required: true
-          - name: description
-            label: Description
-            type: text
-          - name: url
-            label: Lien
-            type: string
-            description: URL complète (https://…) ou chemin interne (/fr/publications/).
       - name: contact_label
         label: Étiquette de la section contact
         type: string
