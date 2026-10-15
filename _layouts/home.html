@@ -4,14 +4,14 @@ layout: default
 {%- include i18n.html -%}
 {%- assign h = site.data.home[lang] -%}
 <section class="hero wrap">
+  <h1 class="display">{{ h.headline }}</h1>
   <div class="hero-text">
-    <h1 class="display">{{ h.headline }}</h1>
     <p class="lede">{{ h.intro }}</p>
     <p class="hero-link"><a class="link-arrow" href="{{ '/' | append: lang | append: '/publications/' | relative_url }}">{{ h.intro_link_label }}<span class="arrow" aria-hidden="true">→</span></a></p>
   </div>
-  <div class="hero-figure" aria-hidden="true">
-    {%- if h.annotation %}<p class="annotation">{{ h.annotation }}</p>{% endif %}
-    {% include trajectory.svg %}
+  <div class="hero-figure{% if h.annotation and h.annotation != '' %} has-annotation{% endif %}" aria-hidden="true">
+    {%- if h.annotation and h.annotation != "" %}<p class="annotation">{{ h.annotation }}</p>{% endif %}
+    <img class="hero-drawing" src="{{ '/assets/images/hero-atlas.svg' | relative_url }}" alt="" width="600" height="484" fetchpriority="high" decoding="async">
   </div>
 </section>
 
