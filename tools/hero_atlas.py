@@ -19,6 +19,7 @@ KATEX_FONTS = Path(glob.glob(str(ROOT / "vendor/bundle/ruby/*/gems/katex-*/vendo
 OUT = ROOT / "assets" / "images" / "hero-atlas.svg"
 
 BLUE = "#2455D6"
+PENCIL = "#252B2A"  # encre: graphite tones come from the stroke opacities
 TERRE = "#B85F3D"
 BRUME = "#A9BBC5"
 
@@ -122,12 +123,12 @@ IMG_A_CAP = "M 176 337 C 196 360, 196 404, 180 427 L 260 440 L 260 320 Z"
 IMG_B = "M 390 386 C 384 354, 416 334, 458 336 C 500 338, 522 360, 518 390 C 514 418, 482 430, 446 428 C 410 426, 394 412, 390 386 Z"
 IMG_B_CAP = "M 340 320 L 340 440 L 432 428 C 414 404, 410 360, 428 337 Z"
 
-STROKE = f'fill="none" stroke="{BLUE}" stroke-linecap="round" stroke-linejoin="round"'
+STROKE = f'fill="none" stroke="{PENCIL}" stroke-linecap="round" stroke-linejoin="round"'
 
 
 def build():
     p = []
-    p.append(f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 484" width="600" height="484">
+    p.append(f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 6 566 478" width="566" height="478">
 <defs>
   <filter id="pencil" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
     <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="wobble"/>
@@ -154,10 +155,10 @@ def build():
 """)
 
     # light washes, kept outside the pencil filter
-    p.append(f'<path d="{U_A}" fill="{BLUE}" opacity="0.035"{anim("fade", 0.9, 0.5)}/>')
-    p.append(f'<path d="{U_B}" fill="{BLUE}" opacity="0.035"{anim("fade", 0.95, 0.5)}/>')
-    p.append(f'<path d="{IMG_A}" fill="{BLUE}" opacity="0.035"{anim("fade", 1.6, 0.5)}/>')
-    p.append(f'<path d="{IMG_B}" fill="{BLUE}" opacity="0.035"{anim("fade", 1.65, 0.5)}/>')
+    p.append(f'<path d="{U_A}" fill="{PENCIL}" opacity="0.03"{anim("fade", 0.9, 0.5)}/>')
+    p.append(f'<path d="{U_B}" fill="{PENCIL}" opacity="0.03"{anim("fade", 0.95, 0.5)}/>')
+    p.append(f'<path d="{IMG_A}" fill="{PENCIL}" opacity="0.03"{anim("fade", 1.6, 0.5)}/>')
+    p.append(f'<path d="{IMG_B}" fill="{PENCIL}" opacity="0.03"{anim("fade", 1.65, 0.5)}/>')
 
     # hatching of the overlaps
     for clip_a, clip_b, d, op, t in [
@@ -215,7 +216,7 @@ def build():
         (2.1, formula(590, 40, 26, [("∫", "big", 0), ("M", "cal", "lim"), ("d", "rm", 0), ("ω", "it", 0), ("=", "rm", 0),
                                     ("∫", "big", 0), ("∂", "rm", "lim"), ("M", "cal", "lim"), ("ω", "it", 0)], anchor="end")),
     ]
-    p.append(f'<g fill="{BLUE}" opacity="0.95" stroke="#F5F0E6" stroke-width="4" stroke-linejoin="round" paint-order="stroke">')
+    p.append(f'<g fill="{PENCIL}" opacity="0.95" stroke="#F5F0E6" stroke-width="4" stroke-linejoin="round" paint-order="stroke">')
     p.extend(pencil(label, "fade", t, 0.45) for t, label in labels)
     p.append("</g>")
     p.append("</svg>")

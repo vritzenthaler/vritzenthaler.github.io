@@ -38,17 +38,8 @@ components:
       - name: intro_link_label
         label: Libellé du lien vers les publications
         type: string
-      - name: contact_label
-        label: Étiquette de la section contact
-        type: string
-      - name: contact_title
-        label: Titre de la section contact
-        type: string
-      - name: contact_text
-        label: Texte de contact
-        type: text
-      - name: contact_link_label
-        label: Libellé du lien LinkedIn
+      - name: blog_link_label
+        label: Libellé du lien vers le blog
         type: string
 
 content:

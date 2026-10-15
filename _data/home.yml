@@ -4,13 +4,11 @@ en:
   annotation: ""
   intro: >-
     I'm Valentin, a doctor in applied mathematics based in Barcelona.
-    I spent years designing numerical methods for electromagnetic simulation,
-    and I now build and test AI systems with the same obsession for rigour.
-  intro_link_label: Read my publications
-  contact_label: Contact
-  contact_title: Let's talk.
-  contact_text: A project, a question about simulation or AI, or simply an idea to discuss. LinkedIn is the best way to reach me.
-  contact_link_label: Write to me on LinkedIn
+    After years developing numerical methods for electromagnetic simulation,
+    I'm now moving into AI engineering. I'm drawn to questions that resist
+    easy answers, and to the careful work of finding out what holds up.
+  intro_link_label: Read my research
+  blog_link_label: Explore my ideas
 fr:
   meta_title: Valentin Ritzenthaler, mathématiques appliquées et IA
   headline: Truth begins where easy answers end.
@@ -18,10 +16,9 @@ fr:
   annotation: ""
   intro: >-
     Je suis Valentin, docteur en mathématiques appliquées, installé à Barcelone.
-    J’ai passé plusieurs années à concevoir des méthodes numériques pour la simulation
-    électromagnétique ; je construis et j’éprouve aujourd’hui des systèmes d’IA avec la même exigence de rigueur.
-  intro_link_label: Lire mes publications
-  contact_label: Contact
-  contact_title: Discutons.
-  contact_text: Un projet, une question de simulation ou d’IA, ou simplement une idée à creuser. LinkedIn est le meilleur moyen de me joindre.
-  contact_link_label: M’écrire sur LinkedIn
+    Après plusieurs années à développer des méthodes numériques pour la simulation
+    électromagnétique, je me tourne aujourd’hui vers l’ingénierie de l’IA. Je suis attiré
+    par les questions qui résistent aux réponses faciles, et par le travail patient
+    qui consiste à vérifier ce qui tient vraiment.
+  intro_link_label: Lire mes recherches
+  blog_link_label: Découvrir mes idées

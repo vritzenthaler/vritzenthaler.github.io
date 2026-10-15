@@ -7,15 +7,15 @@ layout: default
   <h1 class="display"{% if h.headline_lang and h.headline_lang != "" and h.headline_lang != lang %} lang="{{ h.headline_lang }}"{% endif %}>{{ h.headline }}</h1>
   <div class="hero-text">
     <p class="lede">{{ h.intro }}</p>
-    <p class="hero-link"><a class="link-arrow" href="{{ '/' | append: lang | append: '/publications/' | relative_url }}">{{ h.intro_link_label }}<span class="arrow" aria-hidden="true">→</span></a></p>
-    <div class="hero-contact">
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>{{ h.contact_label }}</p>
-      <p class="contact-text">{% if h.contact_title %}<span class="contact-title">{{ h.contact_title }}</span> {% endif %}{{ h.contact_text }}</p>
-      <p><a class="link-arrow" href="{{ site.data.site.linkedin }}" rel="me">{{ h.contact_link_label }}<span class="arrow" aria-hidden="true">↗</span></a></p>
-    </div>
+    <p class="hero-links">
+      <a class="link-arrow" href="{{ '/' | append: lang | append: '/publications/' | relative_url }}">{{ h.intro_link_label }}<span class="arrow" aria-hidden="true">→</span></a>
+      {%- if h.blog_link_label %}
+      <a class="link-arrow" href="{{ '/' | append: lang | append: '/blog/' | relative_url }}">{{ h.blog_link_label }}<span class="arrow" aria-hidden="true">→</span></a>
+      {%- endif %}
+    </p>
   </div>
   <div class="hero-figure{% if h.annotation and h.annotation != '' %} has-annotation{% endif %}" aria-hidden="true">
     {%- if h.annotation and h.annotation != "" %}<p class="annotation">{{ h.annotation }}</p>{% endif %}
-    <img class="hero-drawing" src="{{ '/assets/images/hero-atlas.svg' | relative_url }}" alt="" width="600" height="484" fetchpriority="high" decoding="async">
+    <img class="hero-drawing" src="{{ '/assets/images/hero-atlas.svg' | relative_url }}" alt="" width="566" height="478" fetchpriority="high" decoding="async">
   </div>
 </section>
