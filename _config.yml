@@ -32,3 +32,4 @@ exclude:
   - .bundle
   - .jekyll-cache
   - tools
+  - build

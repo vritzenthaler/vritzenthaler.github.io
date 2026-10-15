@@ -20,3 +20,4 @@
 {%- endif -%}
 {%- assign section = page.ref -%}
 {%- if is_post -%}{%- assign section = "blog" -%}{%- endif -%}
+{%- if page.layout == 'reader' -%}{%- assign section = 'publications' -%}{%- endif -%}

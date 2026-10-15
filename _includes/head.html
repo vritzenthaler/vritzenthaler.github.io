@@ -21,7 +21,7 @@
 {%- endif %}
 {%- endunless %}
 <meta property="og:site_name" content="{{ site.data.site.name }}">
-<meta property="og:type" content="{% if is_post %}article{% else %}website{% endif %}">
+<meta property="og:type" content="{% if is_post or page.layout == 'reader' %}article{% else %}website{% endif %}">
 <meta property="og:title" content="{{ meta_title | strip_html | escape }}">
 <meta property="og:description" content="{{ meta_description | strip_html | strip_newlines | escape }}">
 <meta property="og:url" content="{{ canonical }}">
@@ -36,6 +36,9 @@
 <link rel="preload" href="{{ '/assets/fonts/newsreader-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ '/assets/fonts/source-sans-3-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{%- if page.layout == "reader" %}
+<link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}">
+{%- endif %}
 {%- if content contains 'class="katex' %}
 <link rel="stylesheet" href="{{ '/assets/katex/katex.css' | relative_url }}">
 {%- endif %}

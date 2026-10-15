@@ -1,0 +1,33 @@
+\documentclass[reqno]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx,booktabs,amssymb,amsmath,amsthm,amsfonts,mathrsfs}
+\usepackage{bbold,pifont,upgreek,mathtools}
+\usepackage[oldenum]{paralist}
+\usepackage{xspace,xcolor,hyperref,cleveref,comment}
+\newcommand{\runningtitle}[1]{}
+\newcommand{\runningauthors}[1]{}
+\renewcommand{\address}[2][]{}
+\renewcommand{\email}[2][]{}
+\newenvironment{acknowledgement}{\par}{\par}
+\def\cf{\emph{cf.\/}}
+\def\ie{\emph{i.e.\/}}
+\def\etc{\emph{etc\/}}
+\def\apriori{\emph{a priori\/}}
+\def\afortiori{\emph{a fortiori\/}}
+\def\loccit{\emph{a loc. cit.\/}}
+\def\etal{\emph{et al.\/}}
+\def\vg{\emph{v.g.\/}}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\numberwithin{equation}{section}
+\input{preamble/macros-math}
+\begin{document}
+\input{body}
+\end{document}

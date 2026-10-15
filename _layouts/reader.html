@@ -1,0 +1,18 @@
+---
+layout: default
+---
+{%- include i18n.html -%}
+{%- assign reader = site.data.readers[page.reader] -%}
+{%- assign publication = site.data.publications | where: 'reader', page.reader | first -%}
+<div class="reader wrap">
+  <nav class="reader-toolbar" aria-label="{{ t.reader.nav_label }}">
+    <a class="reader-back" href="{{ '/' | append: lang | append: '/publications/' | relative_url }}"><span aria-hidden="true">← </span>{{ t.reader.back }}</a>
+    {%- if publication.pdf and publication.pdf != '' %}
+    <a class="reader-pdf" href="{% if publication.pdf contains '://' %}{{ publication.pdf }}{% else %}{{ publication.pdf | relative_url }}{% endif %}" type="application/pdf">{{ t.publications.pdf }} <span aria-hidden="true">↓</span></a>
+    {%- endif %}
+  </nav>
+  {%- if reader.warning %}<p class="reader-warning" role="note">{{ t.reader.warning }}</p>{% endif %}
+  <article class="reader-paper" lang="{{ publication.language | default: 'en' }}">
+    {% include {{ reader.fragment }} %}
+  </article>
+</div>

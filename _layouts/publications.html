@@ -25,6 +25,10 @@ layout: default
         <p class="pub-authors">{{ pub.authors | escape | replace: "V. Ritzenthaler", "<strong>V. Ritzenthaler</strong>" }}</p>
         <p class="pub-venue">{% if pub.type == "thesis" %}{{ t.publications.thesis }}, {% endif %}<span{% if pub.type == "thesis" and pub.language != lang %} lang="{{ pub.language }}"{% endif %}>{{ pub.venue }}</span></p>
         <p class="pub-links">
+          {%- if pub.reader %}
+          {%- assign reader_page = site.pages | where: "reader", pub.reader | where: "lang", lang | first -%}
+          {%- if reader_page %}<a href="{{ reader_page.url | relative_url }}">{{ t.publications.read }}</a>{% endif %}
+          {%- endif %}
           {%- if pub.doi and pub.doi != "" %}<a href="https://doi.org/{{ pub.doi }}">{{ t.publications.doi }}<span class="pub-doi"> {{ pub.doi }}</span> <span aria-hidden="true">↗</span></a>{% endif %}
           {%- if pub.pdf and pub.pdf != "" %}
           {%- if pub.pdf contains "://" %}<a href="{{ pub.pdf }}">{{ t.publications.pdf }} <span aria-hidden="true">↗</span></a>

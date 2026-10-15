@@ -14,6 +14,7 @@ en:
     doi: DOI
     pdf: PDF
     link: Link
+    read: Read
     in_language: in French
     thesis: PhD thesis
   blog:
@@ -22,6 +23,10 @@ en:
     empty: No articles yet.
     untranslated: This article is only available in English.
     other_list: Read the French articles
+  reader:
+    nav_label: Paper navigation
+    back: Back to publications
+    warning: "Some mathematical notation could not be rendered reliably. Refer to the PDF."
   switch:
     missing: French version not available, go to the French blog
   footer:
@@ -43,6 +48,7 @@ fr:
     doi: DOI
     pdf: PDF
     link: Lien
+    read: Lire
     in_language: en français
     thesis: Thèse de doctorat
   blog:
@@ -51,6 +57,10 @@ fr:
     empty: Aucun article pour l’instant.
     untranslated: Cet article n’existe qu’en français.
     other_list: Lire les articles en anglais
+  reader:
+    nav_label: Navigation de l’article
+    back: Retour aux publications
+    warning: "Certaines notations mathématiques n’ont pas pu être rendues fidèlement. Consultez le PDF."
   switch:
     missing: Version anglaise indisponible, aller au blog en anglais
   footer:

@@ -243,6 +243,13 @@ content:
         type: file
         options:
           media: papers
+      - name: reader
+        label: Lecteur HTML
+        type: string
+        pattern:
+          regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          message: "Minuscules, chiffres et tirets uniquement"
+        description: Identifiant du lecteur déjà exporté (ex. cdo-maxwell). Laisser vide sans version HTML.
 
   - name: pages
     label: Pages

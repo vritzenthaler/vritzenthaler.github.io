@@ -1,0 +1,188 @@
+@font-face {
+  font-family: 'Latin Modern Math';
+  src: url('../fonts/latinmodern-math.otf') format('opentype');
+  font-display: swap;
+}
+
+.reader { padding-block: 1rem 5rem; }
+
+.reader-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1.5rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  font-family: var(--sans);
+  font-size: .9rem;
+}
+
+
+.reader-warning {
+  max-width: 52rem;
+  margin: 0 auto 2rem;
+  font-family: var(--sans);
+  font-size: .9rem;
+  padding: .6rem 1rem;
+  border-inline-start: 2px solid var(--terre, #b85f3d);
+  background: var(--paper-deep, #ece5d7);
+}
+
+.reader-paper {
+  max-width: 52rem;
+  margin-inline: auto;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.65;
+}
+
+.reader-paper .ltx_title_document {
+  text-align: center;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  margin-block: 0 1rem;
+}
+
+.reader-paper .ltx_personname { display: block; text-align: center; }
+.reader-paper .ltx_authors { margin-bottom: 1.5rem; text-align: center; }
+.reader-paper .ltx_abstract {
+  max-width: 48rem;
+  margin-inline: auto;
+  margin-block-end: 2.5rem;
+  font-size: .95em;
+}
+.reader-paper .ltx_title_abstract {
+  font-size: .85em;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.reader-paper .ltx_keywords {
+  max-width: 48rem;
+  margin-inline: auto;
+  font-size: .85em;
+}
+.reader-paper .ltx_title_keywords {
+  display: inline;
+  font-size: 1em;
+}
+
+.reader-paper math { font-family: 'Latin Modern Math', math; }
+.reader-paper .reader-math {
+  display: inline-block;
+  width: max-content;
+  white-space: nowrap;
+  hyphens: none;
+}
+.reader-equation .reader-inline-math {
+  display: inline;
+  max-width: none;
+  overflow: visible;
+}
+.reader-paper .reader-math .katex { font-size: 1em; text-align: initial; }
+.reader-paper .reader-math .katex-display { margin: 0; text-align: inherit; }
+.reader-paper :target { scroll-margin-top: 2rem; }
+
+.reader-inline-math {
+  display: inline-grid;
+  max-width: 100%;
+  vertical-align: baseline;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.reader-inline-math::-webkit-scrollbar { display: none; }
+
+.reader-paper .ltx_title { line-height: 1.25; }
+.reader-paper .ltx_title_section { font-size: 1.5rem; margin-block: 2.2rem .8rem; }
+.reader-paper .ltx_title_subsection { font-size: 1.25rem; margin-block: 1.8rem .6rem; }
+.reader-paper .ltx_title_subsubsection { font-size: 1.1rem; margin-block: 1.5rem .5rem; }
+.reader-paper .ltx_title_appendix,
+.reader-paper .ltx_title_bibliography { font-size: 1.5rem; margin-block: 2.2rem .8rem; }
+
+.reader-paper .ltx_p { margin-block: .9rem; }
+.reader-paper .ltx_para { margin-block: .9rem; }
+
+.reader-paper .ltx_para,
+.reader-paper .ltx_p {
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
+}
+
+.reader-paper .ltx_theorem { margin-block: 1.2rem; }
+.reader-paper .ltx_title_theorem,
+.reader-paper .ltx_title_proof { font-size: 1em; margin-block: .5rem; }
+.reader-paper .ltx_proof { margin-block: 1rem; font-style: normal; }
+.reader-paper .ltx_title_proof { font-style: italic; }
+.reader-paper .ltx_theorem .ltx_p { font-style: italic; }
+.reader-paper .ltx_runin { display: inline; }
+.reader-paper .ltx_runin + .ltx_para,
+.reader-paper .ltx_runin + .ltx_para .ltx_p,
+.reader-paper .ltx_runin + p { display: inline; }
+.reader-paper .ltx_runin + .ltx_para .ltx_p + .ltx_p { display: block; }
+
+.reader-equation {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 1.2rem;
+  padding-block: .4rem;
+}
+.reader-equation > table { width: 100%; border-collapse: collapse; }
+.reader-equation:focus-visible {
+  outline: 2px solid var(--terre, #b85f3d);
+  outline-offset: 2px;
+}
+.reader-paper .ltx_align_right { text-align: right; }
+.reader-paper .ltx_align_left { text-align: left; }
+.reader-paper .ltx_align_center { text-align: center; }
+.reader-paper .ltx_align_baseline { vertical-align: baseline; }
+.reader-paper .ltx_align_middle { vertical-align: middle; }
+.reader-paper .ltx_eqn_center_padleft,
+.reader-paper .ltx_eqn_center_padright { width: 50%; min-width: .5em; }
+.reader-paper .ltx_eqn_eqno { white-space: nowrap; padding-inline-start: 1rem; }
+.reader-paper .ltx_tag { white-space: nowrap; }
+
+.reader-paper .ltx_figure { margin-block: 2rem; text-align: center; }
+.reader-paper .ltx_figure svg { margin-inline: auto; display: block; max-width: 100%; height: auto; }
+.reader-paper .ltx_figure foreignObject { overflow: visible; }
+.reader-paper .ltx_figure foreignObject math { font-size: 10px; }
+.reader-paper .ltx_figure img { max-width: 100%; height: auto; }
+.reader-paper .ltx_caption { font-size: .9rem; margin-top: .5rem; text-align: center; }
+
+.reader-paper .ltx_bibliography { font-size: .95rem; }
+.reader-paper .ltx_biblist { padding-inline-start: 1.5rem; }
+.reader-paper .ltx_bibitem { margin-block: .4rem; }
+.reader-paper .ltx_bib_title { font-style: italic; }
+
+.reader-paper .ltx_note { font-size: .85rem; }
+.reader-paper .ltx_note_mark { vertical-align: super; font-size: .7em; }
+
+.reader-paper .ltx_itemize,
+.reader-paper .ltx_enumerate { padding-inline-start: 1.75rem; }
+
+.reader-paper .ltx_font_bold { font-weight: bold; }
+.reader-paper .ltx_font_medium { font-weight: normal; }
+.reader-paper .ltx_font_italic { font-style: italic; font-variant: normal; }
+.reader-paper .ltx_font_upright { font-style: normal; font-variant: normal; }
+.reader-paper .ltx_font_slanted { font-style: oblique; font-variant: normal; }
+.reader-paper .ltx_font_smallcaps { font-variant: small-caps; font-style: normal; }
+.reader-paper .ltx_font_sansserif { font-family: var(--sans); }
+.reader-paper .ltx_font_typewriter { font-family: monospace; }
+.reader-paper .ltx_font_mathcaligraphic { font-family: 'Latin Modern Math', cursive; }
+.reader-paper .ltx_emph { font-style: italic; }
+.reader-paper .ltx_mathvariant_italic { font-style: italic; }
+.reader-paper .ltx_mathvariant_bold { font-weight: bold; }
+.reader-paper .ltx_mathvariant_bold-italic { font-style: italic; font-weight: bold; }
+.reader-paper .ltx_mathvariant_sans-serif { font-family: sans-serif; }
+.reader-paper .ltx_mathvariant-bold-sans-serif { font-family: sans-serif; font-weight: bold; }
+.reader-paper .ltx_mathvariant-sans-serif-italic { font-family: sans-serif; font-style: italic; }
+.reader-paper .ltx_mathvariant-bold-sans-serif-italic { font-family: sans-serif; font-style: italic; font-weight: bold; }
+.reader-paper .ltx_mathvariant_monospace { font-family: monospace; }
+.reader-paper .ltx_mathvariant_double-struck { font-weight: bold; }
+.reader-paper .ltx_mathvariant_script,
+.reader-paper .ltx_mathvariant_bold-script { font-family: 'Latin Modern Math', cursive; }
+.reader-paper .ltx_mathvariant_bold-script { font-weight: bold; }
+
+@media (max-width: 40rem) {
+  .reader-paper { font-size: 1.1rem; }
+}
