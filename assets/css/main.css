@@ -942,11 +942,11 @@ abbr[title] {
   }
 
   ::view-transition-old(root) {
-    animation: page-out 0.28s ease-out both;
+    animation: page-out 0.5s ease-in-out both;
   }
 
   ::view-transition-new(root) {
-    animation: page-in 0.5s ease-in-out 0.12s both;
+    animation: page-in 0.5s ease-in-out both;
   }
 }
 
