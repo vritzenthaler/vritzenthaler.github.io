@@ -738,11 +738,17 @@ abbr[title] {
 }
 
 .post-header .lede {
+  max-width: 44rem;
+  margin-inline: auto;
   font-family: var(--serif);
   font-size: clamp(1.3rem, 1.15rem + 0.55vw, 1.6rem);
   font-style: italic;
   line-height: 1.4;
   color: var(--ink-soft);
+  text-align: justify;
+  text-align-last: center;
+  text-wrap: wrap;
+  hyphens: auto;
 }
 
 .notice {
@@ -791,6 +797,12 @@ abbr[title] {
 .prose ul,
 .prose ol {
   margin: 0 0 1.3em;
+}
+
+.prose p,
+.prose li {
+  text-align: justify;
+  text-wrap: wrap;
 }
 
 .prose h2 {
