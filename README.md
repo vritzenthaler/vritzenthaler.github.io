@@ -22,7 +22,7 @@ bundle exec jekyll serve --livereload
 - `assets/images/blog/` — illustrations (3:2, 1200 × 800). `python3 tools/illustrations.py` regenerates the default ones.
 - `assets/papers/` — downloadable PDFs.
 
-Article bodies are raw Markdown (Pages CMS `code` field) so LaTeX is never escaped. Equations are rendered at build time with KaTeX (`kramdown-math-katex`, needs Node for ExecJS): `$$...$$` inside a sentence is inline, `$$...$$` alone in its own paragraph is displayed. The KaTeX stylesheet (`assets/katex/`) is only loaded on pages containing math; no JavaScript is shipped.
+Article bodies are raw Markdown (Pages CMS `code` field) so LaTeX is never escaped. Equations are rendered at build time with KaTeX (`kramdown-math-katex`, needs Node for ExecJS): `$$...$$` inside a sentence is inline, `$$...$$` alone in its own paragraph is displayed. The KaTeX stylesheet (`assets/katex/`) is only loaded on pages containing math. The only JavaScript shipped is `assets/js/scrollbar.js`, which fades the page scrollbar out when idle; without it the scrollbar stays visible.
 
 English is the default language: `/` renders the English home page, with `/en/` as canonical URL.
 

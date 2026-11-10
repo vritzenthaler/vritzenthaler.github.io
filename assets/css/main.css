@@ -140,8 +140,32 @@ a:hover {
 
 /* Scrollbars */
 
+@property --sb-thumb {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #b85f3d;
+}
+
+html.sb-auto {
+  --sb-thumb: transparent;
+  transition: --sb-thumb 0.4s var(--ease);
+}
+
+html.sb-auto.sb-on {
+  --sb-thumb: var(--terre);
+  transition-duration: 0.15s;
+}
+
+body > * {
+  --sb-thumb: var(--terre);
+}
+
 @supports not selector(::-webkit-scrollbar) {
   html {
+    scrollbar-color: var(--sb-thumb, var(--terre)) transparent;
+  }
+
+  body > * {
     scrollbar-color: var(--terre) transparent;
   }
 
@@ -166,7 +190,7 @@ a:hover {
     min-height: 2.5rem;
     border: 3px solid transparent;
     border-radius: 999px;
-    background-color: var(--terre);
+    background-color: var(--sb-thumb, var(--terre));
     background-clip: padding-box;
   }
 
