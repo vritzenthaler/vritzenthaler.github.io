@@ -32,5 +32,10 @@ class TestReaderStyles(unittest.TestCase):
                          r'content-visibility: visible;\s*'
                          r'contain-intrinsic-block-size: none;\s*\}')
 
+    def test_paragraph_alignment_does_not_leak_into_math(self):
+        # text-align-last is inherited and breaks KaTeX's centred
+        # accents, fractions and limits.
+        self.assertNotIn('text-align-last', self.css)
+
 if __name__ == '__main__':
     unittest.main()

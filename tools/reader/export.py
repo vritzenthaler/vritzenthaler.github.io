@@ -49,6 +49,7 @@ SOURCE_FILES = [
     ("build/aux/preprint-ams/main.bbl", "main.bbl"),
 ]
 SOURCE_DIRS = ["sections", "figures"]
+QED = "\u220e"
 
 
 class ConversionError(RuntimeError):
@@ -177,6 +178,26 @@ def wrap_inline_math(doc: ET.Element) -> None:
         wrap_element(elem, parents, wrapper)
 
 
+def mark_qed(doc: ET.Element) -> None:
+    for proof in doc.iter("div"):
+        if "ltx_proof" not in proof.get("class", "").split():
+            continue
+        paras = list(proof.iter("p"))
+        if not paras:
+            continue
+        para = paras[-1]
+        last = para[-1] if len(para) else None
+        text = (para.text if last is None else last.tail) or ""
+        head = text.rstrip()
+        if not head.endswith(QED):
+            continue
+        if last is None:
+            para.text = head[:-len(QED)]
+        else:
+            last.tail = head[:-len(QED)]
+        ET.SubElement(para, "span", {"class": "reader-qed"}).text = QED
+
+
 def entities_to_numeric(text: str) -> str:
     def rep(match):
         ent = match.group(1)
@@ -288,6 +309,7 @@ def extract_fragment(xhtml: Path, slug: str, workdir: Path) -> Path:
     remove_elements(doc, "annotation-xml")
     wrap_display_equations(doc)
     wrap_inline_math(doc)
+    mark_qed(doc)
     render_document_math(doc)
     resources = rewrite_resources(doc, xhtml, slug)
     frag = workdir / "fragment.html"

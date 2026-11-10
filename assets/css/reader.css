@@ -113,6 +113,8 @@
   scrollbar-width: none;
 }
 .reader-inline-math::-webkit-scrollbar { display: none; }
+.reader-paper .ltx_p .reader-inline-math { display: inline; overflow: visible; }
+.reader-paper .ltx_p .reader-inline-math > .reader-math { display: inline; white-space: normal; }
 
 .reader-paper .ltx_title { line-height: 1.25; }
 .reader-paper .ltx_title_section { font-size: 1.5rem; margin-block: 2.2rem .8rem; }
@@ -127,16 +129,27 @@
 .reader-paper .ltx_para,
 .reader-paper .ltx_p {
   text-align: justify;
-  text-align-last: start;
   hyphens: auto;
 }
 
 .reader-paper .ltx_theorem { margin-block: 1.2rem; }
 .reader-paper .ltx_title_theorem,
-.reader-paper .ltx_title_proof { font-size: 1em; margin-block: .5rem; }
+.reader-paper .ltx_title_proof { font-size: 1em; font-weight: normal; margin-block: .5rem; }
 .reader-paper .ltx_proof { margin-block: 1rem; font-style: normal; }
 .reader-paper .ltx_title_proof { font-style: italic; }
-.reader-paper .ltx_theorem .ltx_p { font-style: italic; }
+.reader-paper .reader-qed {
+  float: right;
+  box-sizing: border-box;
+  inline-size: .65em;
+  block-size: .65em;
+  margin-block-start: .6em;
+  margin-inline-start: 1em;
+  border: 1px solid currentColor;
+  overflow: hidden;
+  text-indent: 1em;
+  white-space: nowrap;
+  line-height: 1;
+}
 .reader-paper .ltx_runin { display: inline; }
 .reader-paper .ltx_runin + .ltx_para,
 .reader-paper .ltx_runin + .ltx_para .ltx_p,
@@ -161,6 +174,8 @@
 .reader-paper .ltx_align_middle { vertical-align: middle; }
 .reader-paper .ltx_eqn_center_padleft,
 .reader-paper .ltx_eqn_center_padright { width: 50%; min-width: .5em; }
+.reader-paper .ltx_equationgroup .ltx_equation > .ltx_eqn_cell { padding-block: .2em; }
+.reader-paper .ltx_eqn_cell.ltx_align_left .katex-html > .base:first-child > .strut:first-child + .mrel { margin-inline-start: .2778em; }
 .reader-paper .ltx_eqn_eqno { white-space: nowrap; padding-inline-start: 1rem; }
 .reader-paper .ltx_tag { white-space: nowrap; }
 
@@ -172,15 +187,38 @@
 .reader-paper .ltx_caption { font-size: .9rem; margin-top: .5rem; text-align: center; }
 
 .reader-paper .ltx_bibliography { font-size: .95rem; }
-.reader-paper .ltx_biblist { padding-inline-start: 1.5rem; }
+.reader-paper .ltx_biblist { padding-inline-start: 2.6em; list-style: none; }
+.reader-paper .ltx_bibitem > .ltx_tag_bibitem {
+  display: inline-block;
+  inline-size: 2.2em;
+  margin-inline: -2.6em .15em;
+  text-align: end;
+}
 .reader-paper .ltx_bibitem { margin-block: .4rem; }
 .reader-paper .ltx_bib_title { font-style: italic; }
 
 .reader-paper .ltx_note { font-size: .85rem; }
 .reader-paper .ltx_note_mark { vertical-align: super; font-size: .7em; }
 
+.reader-paper .ltx_cite { font-style: normal; }
+
 .reader-paper .ltx_itemize,
 .reader-paper .ltx_enumerate { padding-inline-start: 1.75rem; }
+.reader-paper :is(.ltx_itemize, .ltx_enumerate):has(> .ltx_item > .ltx_tag_item) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: .5em;
+}
+.reader-paper .ltx_item:has(> .ltx_tag_item) {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+}
+.reader-paper .ltx_item > .ltx_tag_item { grid-column: 1; justify-self: end; }
+.reader-paper .ltx_item > .ltx_tag_item ~ * { grid-column: 2; margin-block: 0; }
+.reader-paper .ltx_item > .ltx_para > .ltx_p:first-child { margin-block-start: 0; }
+.reader-paper .ltx_item > .ltx_para > .ltx_p:last-child { margin-block-end: 0; }
 
 .reader-paper .ltx_font_bold { font-weight: bold; }
 .reader-paper .ltx_font_medium { font-weight: normal; }

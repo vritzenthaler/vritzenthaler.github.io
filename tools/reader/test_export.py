@@ -125,6 +125,27 @@ class TestSerialization(unittest.TestCase):
             self.assertIn("Abs.", text)
             self.assertIn("Keys", text)
 
+    def test_qed_marked_at_proof_end_only(self):
+        doc = ET.fromstring(
+            '<div class="ltx_document">'
+            '<div class="ltx_proof"><p class="ltx_p">first \u220e</p>'
+            '<p class="ltx_p">see <a href="#x">A.1</a>.\n\u220e</p>\n</div>'
+            '<div class="ltx_proof"><p class="ltx_p">no mark</p></div>'
+            '<p class="ltx_p">outside \u220e</p></div>')
+        export.mark_qed(doc)
+        marks = [e for e in doc.iter("span")
+                 if e.get("class") == "reader-qed"]
+        self.assertEqual([m.text for m in marks], ["\u220e"])
+        proof = list(doc)[0]
+        self.assertEqual(list(proof)[0].text, "first \u220e")
+        last = list(proof)[1]
+        self.assertEqual([c.tag for c in last], ["a", "span"])
+        self.assertEqual(last[0].tail, ".\n")
+        self.assertEqual(list(doc)[2].text, "outside \u220e")
+        export.mark_qed(doc)
+        self.assertEqual(sum(e.get("class") == "reader-qed"
+                             for e in doc.iter("span")), 1)
+
     def test_svg_math_skipped(self):
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)
@@ -274,6 +295,12 @@ class TestPublishedArtifact(unittest.TestCase):
         self.assertEqual(len(maths), 1171)
         ids = {e.get("id") for e in maths}
         self.assertEqual(len(ids), 1171)
+        proofs = [e for e in iter_all(root, "div")
+                  if "ltx_proof" in (e.get("class") or "").split()]
+        marks = [e for e in iter_all(root, "span")
+                 if e.get("class") == "reader-qed"]
+        self.assertEqual(len(proofs), 20)
+        self.assertEqual(len(marks), 20)
         for e in maths:
             self.assertTrue(any("katex-html" in (d.get("class") or "")
                                 for d in e.iter()))
